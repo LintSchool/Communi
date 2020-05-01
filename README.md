@@ -22,4 +22,8 @@ This template is using [**ktlint**](https://github.com/pinterest/ktlint) with th
 
 This template is also using [**detekt**](https://github.com/arturbosch/detekt) to analyze the source code, with the configuration that is stored in the [detekt.yml](config/detekt/detekt.yml) file (the file has been generated with the `detektGenerateConfig` task).
 
-##
+## Naming convensions
+Please check and read this [guideline](https://github.com/LintSchool/Communi-Android/wiki/Naming-Conventions)
+
+## GitFlow 
+We follow this [GitFlow guideline](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
