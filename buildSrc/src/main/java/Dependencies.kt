@@ -13,6 +13,9 @@ object Versions {
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
+    const val VIEWPAGER2 = "1.0.0-alpha01"
+    const val ANDROID_MATERIAL = "1.2.0-alpha02"
+    const val LEGACY = "1.0.0"
 }
 
 object BuildPluginsVersion {
@@ -21,12 +24,16 @@ object BuildPluginsVersion {
     const val KOTLIN = "1.3.72"
     const val KTLINT = "9.2.1"
     const val VERSIONS_PLUGIN = "0.28.0"
+
 }
 
 object SupportLibs {
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val ANDROIDX_VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Versions.VIEWPAGER2}"
+    const val GOOGLE_ANDROID_MATERIAL = "com.google.android.material:material:${Versions.ANDROID_MATERIAL}"
+    const val ANDROIDX_LEGACY =  "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
 }
 
 object TestingLib {
