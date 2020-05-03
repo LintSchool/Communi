@@ -48,6 +48,7 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_VIEWPAGER2)
     implementation(SupportLibs.GOOGLE_ANDROID_MATERIAL)
     implementation(SupportLibs.ANDROIDX_LEGACY)
+    implementation(SupportLibs.CIRCLE_IMAGE_VIEW)
 
     testImplementation(TestingLib.JUNIT)
 

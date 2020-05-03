@@ -16,6 +16,7 @@ object Versions {
     const val VIEWPAGER2 = "1.0.0-alpha01"
     const val ANDROID_MATERIAL = "1.2.0-alpha02"
     const val LEGACY = "1.0.0"
+    const val CIRCLE_IMAGE = "3.1.0"
 }
 
 object BuildPluginsVersion {
@@ -34,6 +35,7 @@ object SupportLibs {
     const val ANDROIDX_VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Versions.VIEWPAGER2}"
     const val GOOGLE_ANDROID_MATERIAL = "com.google.android.material:material:${Versions.ANDROID_MATERIAL}"
     const val ANDROIDX_LEGACY =  "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
+    const val CIRCLE_IMAGE_VIEW = "de.hdodenhof:circleimageview:${Versions.CIRCLE_IMAGE}"
 }
 
 object TestingLib {
