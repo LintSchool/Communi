@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.ncorti.kotlin.template.app.R
+import com.ncorti.kotlin.template.app.stories.StoriesActivity
 import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment() {
@@ -53,7 +55,7 @@ class FeedFragment : Fragment() {
         storiesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         storiesAdapter.onItmClick = { itemView ->
-            Toast.makeText(activity, storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(), Toast.LENGTH_SHORT).show()
+            startActivity(StoriesActivity.startIntent(activity!!))
         }
 
         feedSubTitle.setOnClickListener {

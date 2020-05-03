@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".stories.StoriesActivity"
+            android:theme="@style/AppTheme.TranslucentStatus"
+            android:configChanges="screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
     </application>
 
 </manifest>
