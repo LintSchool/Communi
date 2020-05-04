@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.ncorti.kotlin.template.app.R
+import com.ncorti.kotlin.template.app.camera.CameraActivity
 import com.ncorti.kotlin.template.app.stories.StoriesActivity
 import kotlinx.android.synthetic.main.fragment_feed.*
 
@@ -55,7 +56,7 @@ class FeedFragment : Fragment() {
         storiesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         storiesAdapter.onItmClick = { itemView ->
-            startActivity(StoriesActivity.startIntent(activity!!))
+            startActivity(CameraActivity.startIntent(requireContext()))
         }
 
         feedSubTitle.setOnClickListener {

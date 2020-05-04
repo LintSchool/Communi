@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ncorti.kotlin.template.app">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +26,14 @@
             android:theme="@style/AppTheme.TranslucentStatus"
             android:configChanges="screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity
+            android:name=".camera.CameraActivity"
+            android:theme="@style/AppTheme.TranslucentStatus" />
+
+        <activity
+            android:name=".camera.ShareMediaActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

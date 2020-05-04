@@ -49,6 +49,12 @@ dependencies {
     implementation(SupportLibs.GOOGLE_ANDROID_MATERIAL)
     implementation(SupportLibs.ANDROIDX_LEGACY)
 
+    //CameraX
+    implementation(SupportLibs.CAMERAX)
+    implementation(SupportLibs.CAMERAX_EXTENSIONS)
+    implementation(SupportLibs.CAMERAX_VIEW)
+
+
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
