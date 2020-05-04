@@ -17,10 +17,10 @@ class PostItemDecorator(var offset: Int) : RecyclerView.ItemDecoration() {
 //        var layoutManagerPositions = (parent.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(IntArray((parent.layoutManager as StaggeredGridLayoutManager).spanCount))
 
 
-        var layoutManagerPosition = (parent.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
+        var layoutManagerPositions = (parent.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(IntArray((parent.layoutManager as StaggeredGridLayoutManager).spanCount))
 
         outRect.apply {
-            if(layoutManagerPosition %2 == 0){
+            if(layoutManagerPositions.get(1) %2 == 0){
                 left = offset
                 right = offset/2
                 top = offset

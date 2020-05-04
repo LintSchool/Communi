@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 import com.ncorti.kotlin.template.app.R
 import kotlinx.android.synthetic.main.fragment_feed.*
+import kotlinx.android.synthetic.main.shimmer_feed.*
 
 class FeedFragment : Fragment() {
 
@@ -39,6 +40,12 @@ class FeedFragment : Fragment() {
     }
 
     fun setUp() {
+
+//        shimmer_post.visibility = View.VISIBLE
+//        shimmer_post.startShimmer()
+
+//        shimmer_post.visibility = View.GONE
+//        shimmer_post.stopShimmer()
 
         feedTitle.text = getString(R.string.feed_title) + "ya 2y 7aga."
 
@@ -102,7 +109,7 @@ class FeedFragment : Fragment() {
         postsAdapter = PostsAdapter()
         postsAdapter.submitList(postsList)
         feedsRV.adapter = postsAdapter
-        var layoutManager  = GridLayoutManager(activity,2)
+        var layoutManager  = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 //
 //
 //

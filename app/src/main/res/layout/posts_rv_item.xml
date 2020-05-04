@@ -8,42 +8,59 @@
     app:cardPreventCornerOverlap="true">
 
     <RelativeLayout
-        android:id="@+id/constraintContainer"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/constraintContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/postTV"
+            android:layout_alignParentStart="true"
             android:layout_marginEnd="16dp"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
             android:src="@drawable/ic_profile"
-            android:layout_above="@+id/postTV"/>
+            android:elevation="7dp"
+            />
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/postTV"
+            android:layout_toEndOf="@+id/profile_image"
+            android:maxLines="1"
+            android:paddingTop="24dp"
             android:textColor="@color/color_gray"
             android:textSize="14sp"
-            android:maxLines="1"
             tools:text="kate"
-            android:layout_toEndOf="@+id/profile_image"
-            android:layout_above="@+id/postTV"/>
+            android:elevation="7dp"/>
 
         <TextView
+            android:background="@color/color_gray"
             android:id="@+id/postTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="18dp"
+            android:text="gfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghggfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghg"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
-            android:layout_marginTop="24dp"
-            android:maxLines="4"
-            android:maxHeight="90dp"
-            android:text="gfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghg"
-           android:layout_alignParentBottom="true"/>
+            android:textSize="14sp" />
 
+
+    </RelativeLayout>
 
     </RelativeLayout>
 
@@ -51,72 +68,73 @@
 
 
 <!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--xmlns:tools="http://schemas.android.com/tools"-->
-<!--android:id="@+id/postContainer"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:maxHeight="200dp"-->
-<!--app:cardPreventCornerOverlap="true">-->
-
-<!--<androidx.constraintlayout.widget.ConstraintLayout-->
-<!--    android:id="@+id/constraintContainer"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/postContainer"-->
 <!--    android:layout_width="wrap_content"-->
 <!--    android:layout_height="wrap_content"-->
-<!--    android:maxHeight="200dp"-->
-<!--    android:paddingTop="32dp">-->
+<!--    app:cardPreventCornerOverlap="true">-->
 
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/nameAndImageGL"-->
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintGuide_percent="0.07" />-->
+<!--        android:layout_height="wrap_content">-->
 
-<!--    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--        android:id="@+id/profile_image"-->
-<!--        android:layout_width="30dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:src="@drawable/ic_profile"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/postTV"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/nameAndImageGL"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/constraintContainer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="fitXY"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"/>-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/userName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="12dp"-->
-<!--        android:textColor="@color/color_gray"-->
-<!--        android:textSize="18sp"-->
-<!--        android:maxLines="1"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/postTV"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/profile_image"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.0"-->
-<!--        tools:text="kate" />-->
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:id="@+id/profile_image"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:src="@drawable/ic_profile"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/userName"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/postTV"-->
+<!--            android:layout_marginStart="24dp"/>-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/postTV"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:maxHeight="60dp"-->
-<!--        android:textColor="@color/colorPrimaryDark"-->
-<!--        android:textSize="18sp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:paddingEnd="16dp"-->
-<!--        android:text="gfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghg"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/nameAndImageGL"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/profile_image"-->
-<!--        app:layout_constraintVertical_bias="0.0"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        android:layout_marginBottom="16dp"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/userName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            android:maxLines="1"-->
+<!--            android:textColor="@color/color_gray"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/postTV"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/profile_image"-->
+<!--            tools:text="kate"-->
+<!--            android:gravity="top"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/postTV"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:maxLines="4"-->
+<!--            android:text="gfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghggfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghggfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghggfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghggfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghggfgggfjhghgjhgjhgjhgjghjgghgjhhhghghghg"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:textSize="14sp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/profile_image"-->
+<!--            android:paddingStart="24dp"-->
+<!--            android:paddingEnd="24dp"-->
+<!--            android:paddingTop="16dp"/>-->
 
 
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 <!--</androidx.cardview.widget.CardView>-->
 

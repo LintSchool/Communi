@@ -17,6 +17,7 @@ object Versions {
     const val ANDROID_MATERIAL = "1.2.0-alpha02"
     const val LEGACY = "1.0.0"
     const val CIRCLE_IMAGE = "3.1.0"
+    const val SHIMMER = "0.4.0"
 }
 
 object BuildPluginsVersion {
@@ -36,6 +37,7 @@ object SupportLibs {
     const val GOOGLE_ANDROID_MATERIAL = "com.google.android.material:material:${Versions.ANDROID_MATERIAL}"
     const val ANDROIDX_LEGACY =  "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
     const val CIRCLE_IMAGE_VIEW = "de.hdodenhof:circleimageview:${Versions.CIRCLE_IMAGE}"
+    const val FACEBOOK_SHIMMER = "com.facebook.shimmer:shimmer:${Versions.SHIMMER}"
 }
 
 object TestingLib {

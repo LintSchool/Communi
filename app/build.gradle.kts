@@ -49,6 +49,7 @@ dependencies {
     implementation(SupportLibs.GOOGLE_ANDROID_MATERIAL)
     implementation(SupportLibs.ANDROIDX_LEGACY)
     implementation(SupportLibs.CIRCLE_IMAGE_VIEW)
+    implementation(SupportLibs.FACEBOOK_SHIMMER)
 
     testImplementation(TestingLib.JUNIT)
 
