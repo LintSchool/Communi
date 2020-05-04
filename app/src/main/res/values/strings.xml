@@ -5,4 +5,12 @@
     <string name="factorial_hint">Insert a number to compute his factorial</string>
     <string name="compute">Compute</string>
     <string name="notification_title">The Result is:</string>
+    <string name="login_desc">Log in to your \nexisting account.</string>
+    <string name="ask_for_sign_up">Don\'t have an account? sign up.</string>
+    <string name="email_address">E-Mail Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_via">or login via</string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
 </resources>

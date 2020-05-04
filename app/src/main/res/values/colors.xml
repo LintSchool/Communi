@@ -3,4 +3,12 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent_gradient_start">#66cbc9</color>
+    <color name="colorAccent_gradient_end">#41b6b3</color>
+    <color name="grays_01_dark_01_100">#4c4b5e</color>
+    <color name="white">#ffffff</color>
+    <color name="off_white">#c7c7d4</color>
+    <color name="grays_04">#F6F7FC</color>
+
+
 </resources>
