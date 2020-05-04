@@ -110,18 +110,7 @@ class FeedFragment : Fragment() {
         postsAdapter.submitList(postsList)
         feedsRV.adapter = postsAdapter
         var layoutManager  = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-//
-//
-//
-//        var lookup = object : GridLayoutManager.SpanSizeLookup() {
-//            override fun getSpanSize(position: Int): Int {
-//                return when (position and 0x1) {
-//                    1 -> 2
-//                    else -> 1
-//                }
-//            }
-//        }
-//        layoutManager.spanSizeLookup = lookup
+
         feedsRV.layoutManager = layoutManager
         feedsRV.addItemDecoration(PostItemDecorator(8))
 
@@ -135,12 +124,13 @@ class FeedFragment : Fragment() {
 
 
         var storiesDataList = listOf<Image>(
-            Image(1, R.drawable.ic_profile),
-            Image(2, R.drawable.ic_profile),
-            Image(3, R.drawable.ic_profile),
-            Image(4, R.drawable.ic_profile),
-            Image(5, R.drawable.ic_profile),
-            Image(6, R.drawable.ic_profile)
+            Image(0, null, true),
+            Image(1, R.drawable.ic_profile, false),
+            Image(2, R.drawable.ic_profile, false),
+            Image(3, R.drawable.ic_profile, false),
+            Image(4, R.drawable.ic_profile, false),
+            Image(5, R.drawable.ic_profile, false),
+            Image(6, R.drawable.ic_profile, false)
         )
 
         storiesAdapter = StoriesAdapter()
@@ -151,6 +141,14 @@ class FeedFragment : Fragment() {
 
 
         storiesAdapter.onItmClick = { itemView ->
+            Toast.makeText(
+                activity,
+                storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        storiesAdapter.onAddMyStoryItmClick = { itemView ->
             Toast.makeText(
                 activity,
                 storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(),
