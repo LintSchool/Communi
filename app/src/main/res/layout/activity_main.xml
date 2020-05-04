@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@color/colorPrimaryDark"
-    android:paddingStart="@dimen/doub_grid_size"
+    android:paddingStart="@dimen/base_grid_size"
     android:paddingTop="@dimen/doub_grid_size"
-    android:paddingBottom="@dimen/doub_grid_size"
     tools:context=".Main.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -27,21 +26,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.9" />
 
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/mainTabView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainViewPagerGuidLine"
+        app:tabBackground="@drawable/tab_background"
+        app:tabGravity="fill"
         app:tabIconTint="@color/color_gray"
-        app:tabSelectedTextColor="@color/colorPrimary" />
+        app:tabIndicatorHeight="0dp"
+        app:tabInlineLabel="true"
+        app:tabMaxWidth="0dp"
+        app:tabMode="scrollable"
+        app:tabRippleColor="@null"
+        app:tabIconTintMode="multiply"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
 
     <!--    <TextView-->

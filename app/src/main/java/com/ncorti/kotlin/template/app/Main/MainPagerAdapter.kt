@@ -28,4 +28,5 @@ class MainPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
 
     }
 
+
 }

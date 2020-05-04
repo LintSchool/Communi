@@ -45,7 +45,7 @@ class PostsViewHolder(itemView: View, var onClick: ((view: View) -> Unit)) :
         itemView.userName.text = itemData.userName
         itemView.postTV.text = itemData.postText
         if (itemData.imagePath != null)
-            itemView.constraintContainer.setBackgroundResource(itemData.imagePath!!)
+            itemView.constraintContainer.setImageResource(itemData.imagePath!!)
 
         itemView.postContainer.setOnClickListener {
             onClick.invoke(itemView)

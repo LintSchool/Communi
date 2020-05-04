@@ -57,7 +57,7 @@ class FeedFragment : Fragment() {
         var postsList = listOf<Post>(
             Post(
                 1,
-                R.drawable.flowers,
+                null,
                 "Kate",
                 R.drawable.download,
                 "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga"

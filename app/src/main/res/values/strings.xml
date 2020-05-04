@@ -6,4 +6,8 @@
     <string name="stories">Stories</string>
     <string name="feed_title">Nice to see you,\n</string>
     <string name="feed_subtitle">What\'s on your mind?</string>
+    <string name="feed">Feed</string>
+    <string name="events">Events</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
 </resources>

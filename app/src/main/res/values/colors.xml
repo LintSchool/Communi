@@ -9,4 +9,6 @@
     <color name="color_solid_secondary">#122b5b</color>
     <color name="color_greys_04_extralight_01_100">#E4E5ED</color>
     <color name="color_greys_03">#BABABC</color>
+    <color name="colorPrimary32">#5166CBC9</color>
+
 </resources>
