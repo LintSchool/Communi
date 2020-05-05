@@ -9,11 +9,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.ncorti.kotlin.template.app.R
 import kotlinx.android.synthetic.main.fragment_feed_comments.*
 
-
 class FeedCommentsFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_feed_comments, container, false)
@@ -27,12 +27,7 @@ class FeedCommentsFragment : Fragment() {
             BottomSheetBehavior.BottomSheetCallback() {
 
             override fun onStateChanged(view: View, state: Int) {
-                when (state) {
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                    }
-                    BottomSheetBehavior.STATE_COLLAPSED -> {
-                    }
-                }
+                val x = state
             }
 
             override fun onSlide(view: View, p1: Float) {
