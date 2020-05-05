@@ -1,6 +1,7 @@
 package com.ncorti.kotlin.template.app.camera
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -27,6 +28,7 @@ class CameraActivity : AppCompatActivity() {
 
     val CAMERA_PERMISSION = Manifest.permission.CAMERA
     val CAMERA_PERMISSION_REQUEST_CODE = 101
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,7 +109,10 @@ class CameraActivity : AppCompatActivity() {
                     }
 
                     override fun onImageSaved(file: File) {
-                        //TODO: Navigate
+                        var intent = Intent()
+                        var data = intent.putExtra(CAPTURED_IMAGE, file)
+                        setResult(Activity.RESULT_OK, data)
+                        finish()
                         val msg = "Photo capture succeeded: ${file.absolutePath}"
                         Log.d("CameraXApp", msg)
                         camera_preview.post {
@@ -171,5 +176,6 @@ private fun updateTransform() {
 
     companion object {
         fun startIntent(context: Context) = Intent(context, CameraActivity::class.java)
+        var CAPTURED_IMAGE = "captured image"
     }
 }
