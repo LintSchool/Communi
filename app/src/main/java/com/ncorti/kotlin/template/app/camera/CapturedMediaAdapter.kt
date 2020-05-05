@@ -3,48 +3,101 @@ package com.ncorti.kotlin.template.app.camera
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ncorti.kotlin.template.app.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_captured.view.*
+import java.lang.IllegalArgumentException
 
-class CapturedMediaAdapter : RecyclerView.Adapter<MediaViewHolder>() {
+class CapturedMediaAdapter :
+    ListAdapter<Any, RecyclerView.ViewHolder>(CapturedMediaAdapter.CapturedImageDiffUtil()) {
 
-    lateinit var onItemClick: ((position: Int) -> Unit)
-    lateinit var onItemRemove: ((position: Int) -> Unit)
-    var imagesList = mutableListOf<CapturedImages>()
+    val VIEW_TYPE_MEDIA = 0
+    val VIEW_TYPE_ADD = 1
 
-    fun setData(data: MutableList<CapturedImages>) {
-        imagesList = data
+    var onItemClick: ((position: Int) -> Unit)? = null
+    var onItemRemove: ((position: Int) -> Unit)? = null
+    var onAddClicked: (() -> Unit)? = null
+
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemView: View
+        val holder: RecyclerView.ViewHolder
+
+        when (viewType) {
+
+            VIEW_TYPE_MEDIA -> {
+                itemView = layoutInflater.inflate(R.layout.item_captured, parent, false)
+                holder = MediaViewHolder(itemView)
+            }
+
+            VIEW_TYPE_ADD -> {
+                itemView = layoutInflater.inflate(R.layout.item_add_photo, parent, false)
+                holder = AddViewHolder(itemView)
+            }
+
+            else -> throw IllegalArgumentException("Undefined View Type")
+        }
+
+        return holder
     }
 
-    override fun getItemCount(): Int = imagesList.size ?: 0
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder {
-        var layoutInflater = LayoutInflater.from(parent.context)
-        var itemView = layoutInflater.inflate(R.layout.item_captured, parent, false)
-        return MediaViewHolder(itemView, onItemClick, onItemRemove)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as? MediaViewHolder)?.bind(currentList[position] as CapturedImage)
     }
 
-    override fun onBindViewHolder(holder: MediaViewHolder, position: Int) {
-        holder.bind(imagesList[position])
+    override fun getItemViewType(position: Int): Int {
+        return if(currentList[position] is CapturedImage) {
+            VIEW_TYPE_MEDIA
+        } else {
+            VIEW_TYPE_ADD
+        }
     }
 
-}
 
-class MediaViewHolder(
-    itemView: View,
-    var onItemClicked: ((position: Int) -> Unit),
-    var onRemoveItem: ((position: Int) -> Unit)
-) :
-    RecyclerView.ViewHolder(itemView) {
+    inner class MediaViewHolder(
+        itemView: View
+    ) :
+        RecyclerView.ViewHolder(itemView) {
 
-    fun bind(itemData: CapturedImages) {
-        if (itemData.imagePath != "")
-            Picasso.get().load(itemData.imagePath).into(itemView.captured_img)
+        init {
+            itemView.capturedImageContainer.setOnClickListener {
+                onItemClick?.invoke(
+                    adapterPosition
+                )
+            }
+            itemView.remove_iv.setOnClickListener { onItemRemove?.invoke(adapterPosition) }
+        }
 
-        itemView.capturedImageContainer.setOnClickListener { onItemClicked?.invoke(adapterPosition) }
-        itemView.remove_iv.setOnClickListener { onRemoveItem.invoke(adapterPosition) }
+        fun bind(itemData: CapturedImage) {
+//            if (itemData.imagePath != "")
+//                Picasso.get().load(itemData.imagePath).into(itemView.captured_img)
+
+
+        }
+    }
+
+    inner class AddViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                onAddClicked?.invoke()
+            }
+        }
+    }
+
+    class CapturedImageDiffUtil : DiffUtil.ItemCallback<Any>() {
+
+        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
+            return (oldItem as? CapturedImage)?.imagePath == (newItem as? CapturedImage)?.imagePath
+        }
+
+        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
+            return (oldItem as? CapturedImage) == (newItem as? CapturedImage)
+        }
 
     }
 }

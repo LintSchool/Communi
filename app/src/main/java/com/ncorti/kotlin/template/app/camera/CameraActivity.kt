@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import com.ncorti.kotlin.template.app.R
 import com.ncorti.kotlin.template.app.utils.showSnackbar
 import kotlinx.android.synthetic.main.activity_camera.*
@@ -117,28 +118,17 @@ class CameraActivity : AppCompatActivity() {
                         message: String,
                         exc: Throwable?
                     ) {
-                        val msg = "Photo capture failed: $message"
-                        Log.e("CameraXApp", msg, exc)
-                        camera_preview.post {
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                        }
                     }
 
                     override fun onImageSaved(file: File) {
-                        if(ShareMediaActivity.firstOpen) {
-                            startActivity(ShareMediaActivity.buildIntent(this@CameraActivity, file.absolutePath))
-                            finish()
+                        if(callingActivity == null) {
+                            startActivity(ShareMediaActivity.buildIntent(this@CameraActivity, Uri.fromFile(file)))
                         }
                         else {
-                            var intent = Intent()
-                            var data = intent.putExtra(CAPTURED_IMAGE, file.absolutePath)
+                            val intent = Intent()
+                            val data = intent.putExtra(CAPTURED_IMAGE, file.absolutePath)
                             setResult(Activity.RESULT_OK, data)
                             finish()
-                        }
-                        val msg = "Photo capture succeeded: ${file.absolutePath}"
-                        Log.d("CameraXApp", msg)
-                        camera_preview.post {
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                         }
                     }
                 })

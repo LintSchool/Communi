@@ -3,31 +3,32 @@ package com.ncorti.kotlin.template.app.camera
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ncorti.kotlin.template.app.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_share_media.*
-import java.io.File
 
 class ShareMediaActivity : AppCompatActivity() {
 
-    lateinit var capturedAdapter: CapturedMediaAdapter
-    var newImage = CapturedImages(0, "")
+    val capturedAdapter = CapturedMediaAdapter()
+    var newImage : CapturedImage? = null
 
     companion object {
         private val IMAGE_ACTIVITY_REQUEST_CODE = 0
         var NEW_IMAGE = "new image"
-        fun buildIntent(context: Context, imagePath: String): Intent {
-            var intent = Intent(context, ShareMediaActivity::class.java)
+
+        fun buildIntent(context: Context, imagePath: Uri): Intent {
+            val intent = Intent(context, ShareMediaActivity::class.java)
             intent.putExtra(NEW_IMAGE, imagePath)
             return intent
 
         }
 
-        var imagesList = mutableListOf<CapturedImages>()
-        var firstOpen = true
+        var imagesList = mutableListOf<Any>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,42 +39,48 @@ class ShareMediaActivity : AppCompatActivity() {
     }
 
     fun setUp() {
-        if (intent.getStringExtra(CameraActivity.CAPTURED_IMAGE) != null) {
-            newImage = CapturedImages(
-                2,
-                intent.getStringExtra(CameraActivity.CAPTURED_IMAGE)!!
-            )
+
+        capturedAdapter.onAddClicked = {
+            startActivityForResult(CameraActivity.startIntent(this), IMAGE_ACTIVITY_REQUEST_CODE)
         }
-        imagesList.add(0, newImage)
-        capturedAdapter = CapturedMediaAdapter()
-        capturedAdapter.setData(imagesList)
+
         captured_images_rv.adapter = capturedAdapter
         captured_images_rv.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        capturedAdapter.notifyDataSetChanged()
-
-        if (newImage.imagePath != "") {
-            Picasso.get()
-                .load(newImage.imagePath)
-                .into(selected_photo_iv)
+        if (intent.getParcelableExtra<Uri>(NEW_IMAGE) != null) {
+            newImage = CapturedImage(
+                2,
+                intent.getParcelableExtra(NEW_IMAGE)!!
+            )
+            Toast.makeText(this, "5ara 3la dma3'k", Toast.LENGTH_LONG).show()
         }
+
+        imagesList.add(0, newImage!!)
+        imagesList.add("Placeholder for view type add")
+
+
+        capturedAdapter.submitList(imagesList)
+
+
+//        if (newImage.imagePath.isAbsolute) {
+            selected_photo_iv.setImageURI(newImage?.imagePath)
+//        }
 
         capturedAdapter.onItemClick = { position ->
-            if (capturedAdapter.imagesList[position].imagePath != "")
-                Picasso.get().load(capturedAdapter.imagesList[position].imagePath).into(
-                    selected_photo_iv
-                )
+//            if ((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath != "")
+//                Picasso.get()
+//                    .load((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath)
+//                    .into(selected_photo_iv)
         }
 
-        capturedAdapter.onItemRemove = { position ->
-            capturedAdapter.imagesList.removeAt(position)
-            capturedAdapter.notifyItemRemoved(position)
+        capturedAdapter.onItemRemove = {
+            imagesList.removeAt(it)
+            capturedAdapter.notifyItemRemoved(it)
         }
 
-        openCameraBtn.setOnClickListener {
-            startActivityForResult(CameraActivity.startIntent(this), IMAGE_ACTIVITY_REQUEST_CODE)
-            firstOpen = false
+        back_iv.setOnClickListener {
+            onBackPressed()
         }
 
     }
@@ -84,15 +91,17 @@ class ShareMediaActivity : AppCompatActivity() {
         if (requestCode == IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    imagesList.add(0, CapturedImages(
-                        1,
-                        data.getStringExtra(CameraActivity.CAPTURED_IMAGE)!!
-                    ))
-                    capturedAdapter.setData(imagesList)
-                    capturedAdapter.notifyDataSetChanged()
+                    imagesList.add(
+                        0, CapturedImage(
+                            1,
+                            data.getParcelableExtra(CameraActivity.CAPTURED_IMAGE)!!
+                        )
+                    )
+//                    capturedAdapter.setData(imagesList)
+//                    capturedAdapter.notifyDataSetChanged()
 
                     Picasso.get()
-                        .load(data.getStringExtra(CameraActivity.CAPTURED_IMAGE))
+                        .load(data.getParcelableExtra<Uri>(CameraActivity.CAPTURED_IMAGE))
                         .into(selected_photo_iv)
                 }
             }
@@ -100,8 +109,6 @@ class ShareMediaActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        startActivityForResult(CameraActivity.startIntent(this), IMAGE_ACTIVITY_REQUEST_CODE)
-        firstOpen = true
+        finish()
     }
 }
