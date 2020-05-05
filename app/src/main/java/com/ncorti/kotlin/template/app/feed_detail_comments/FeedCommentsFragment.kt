@@ -36,6 +36,7 @@ class PostCommentsFragment : Fragment() {
             }
 
             override fun onSlide(view: View, p1: Float) {
+                //TODO: handle onSlide
             }
         })
     }
