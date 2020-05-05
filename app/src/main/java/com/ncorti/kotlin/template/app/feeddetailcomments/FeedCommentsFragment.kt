@@ -1,4 +1,4 @@
-package com.ncorti.kotlin.template.app.feed_detail_comments
+package com.ncorti.kotlin.template.app.feeddetailcomments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.ncorti.kotlin.template.app.R
 import kotlinx.android.synthetic.main.fragment_feed_comments.*
 
 
-class PostCommentsFragment : Fragment() {
+class FeedCommentsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +36,7 @@ class PostCommentsFragment : Fragment() {
             }
 
             override fun onSlide(view: View, p1: Float) {
-                //TODO: handle onSlide
+                val x = p1
             }
         })
     }
