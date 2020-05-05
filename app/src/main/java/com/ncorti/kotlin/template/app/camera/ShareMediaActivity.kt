@@ -16,19 +16,20 @@ class ShareMediaActivity : AppCompatActivity() {
 
     val capturedAdapter = CapturedMediaAdapter()
     var newImage : CapturedImage? = null
+    var imagesList = mutableListOf<Any>()
 
     companion object {
         private val IMAGE_ACTIVITY_REQUEST_CODE = 0
         var NEW_IMAGE = "new image"
 
-        fun buildIntent(context: Context, imagePath: Uri): Intent {
+        fun buildIntent(context: Context, imagePath: String): Intent {
             val intent = Intent(context, ShareMediaActivity::class.java)
             intent.putExtra(NEW_IMAGE, imagePath)
             return intent
 
         }
 
-        var imagesList = mutableListOf<Any>()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,12 +49,11 @@ class ShareMediaActivity : AppCompatActivity() {
         captured_images_rv.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        if (intent.getParcelableExtra<Uri>(NEW_IMAGE) != null) {
+        if (intent.getStringExtra(NEW_IMAGE) != null) {
             newImage = CapturedImage(
                 2,
-                intent.getParcelableExtra(NEW_IMAGE)!!
+                intent.getStringExtra(NEW_IMAGE)!!
             )
-            Toast.makeText(this, "5ara 3la dma3'k", Toast.LENGTH_LONG).show()
         }
 
         imagesList.add(0, newImage!!)
@@ -63,15 +63,15 @@ class ShareMediaActivity : AppCompatActivity() {
         capturedAdapter.submitList(imagesList)
 
 
-//        if (newImage.imagePath.isAbsolute) {
-            selected_photo_iv.setImageURI(newImage?.imagePath)
-//        }
+        if (newImage?.imagePath?.isNotEmpty() == true) {
+            Picasso.get().load("file//: ${newImage?.imagePath}")
+        }
 
         capturedAdapter.onItemClick = { position ->
-//            if ((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath != "")
-//                Picasso.get()
-//                    .load((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath)
-//                    .into(selected_photo_iv)
+            if ((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath != "")
+                Picasso.get()
+                    .load((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath)
+                    .into(selected_photo_iv)
         }
 
         capturedAdapter.onItemRemove = {
@@ -94,14 +94,13 @@ class ShareMediaActivity : AppCompatActivity() {
                     imagesList.add(
                         0, CapturedImage(
                             1,
-                            data.getParcelableExtra(CameraActivity.CAPTURED_IMAGE)!!
+                            data.getStringExtra(CameraActivity.CAPTURED_IMAGE)!!
                         )
                     )
-//                    capturedAdapter.setData(imagesList)
-//                    capturedAdapter.notifyDataSetChanged()
+                    capturedAdapter.notifyItemInserted(0)
 
                     Picasso.get()
-                        .load(data.getParcelableExtra<Uri>(CameraActivity.CAPTURED_IMAGE))
+                        .load(data.getStringExtra(CameraActivity.CAPTURED_IMAGE))
                         .into(selected_photo_iv)
                 }
             }

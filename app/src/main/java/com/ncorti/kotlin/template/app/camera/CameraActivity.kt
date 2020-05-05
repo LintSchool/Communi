@@ -122,7 +122,7 @@ class CameraActivity : AppCompatActivity() {
 
                     override fun onImageSaved(file: File) {
                         if(callingActivity == null) {
-                            startActivity(ShareMediaActivity.buildIntent(this@CameraActivity, Uri.fromFile(file)))
+                            startActivity(ShareMediaActivity.buildIntent(this@CameraActivity, file.absolutePath))
                         }
                         else {
                             val intent = Intent()
@@ -142,7 +142,7 @@ class CameraActivity : AppCompatActivity() {
             .apply {
                 setLensFacing(lensFacing)
                 setTargetRotation(camera_preview.display.rotation)
-                setCaptureMode(ImageCapture.CaptureMode.MAX_QUALITY)
+                setCaptureMode(ImageCapture.CaptureMode.MIN_LATENCY)
             }.build()
 
         // Build the image capture use case and attach button click listener

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ncorti.kotlin.template.app.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_captured.view.*
-import java.lang.IllegalArgumentException
 
 class CapturedMediaAdapter :
     ListAdapter<Any, RecyclerView.ViewHolder>(CapturedMediaAdapter.CapturedImageDiffUtil()) {
@@ -20,7 +19,6 @@ class CapturedMediaAdapter :
     var onItemClick: ((position: Int) -> Unit)? = null
     var onItemRemove: ((position: Int) -> Unit)? = null
     var onAddClicked: (() -> Unit)? = null
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -51,7 +49,7 @@ class CapturedMediaAdapter :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if(currentList[position] is CapturedImage) {
+        return if (currentList[position] is CapturedImage) {
             VIEW_TYPE_MEDIA
         } else {
             VIEW_TYPE_ADD
@@ -74,9 +72,8 @@ class CapturedMediaAdapter :
         }
 
         fun bind(itemData: CapturedImage) {
-//            if (itemData.imagePath != "")
-//                Picasso.get().load(itemData.imagePath).into(itemView.captured_img)
-
+            if (itemData.imagePath != "")
+                Picasso.get().load(itemData.imagePath).into(itemView.captured_img)
 
         }
     }
