@@ -24,7 +24,7 @@ class FeedFragment : Fragment() {
 
     companion object {
         fun newInstance(): FeedFragment = FeedFragment()
-        private val IMAGE_ACTIVITY_REQUEST_CODE = 0
+
     }
 
     override fun onCreateView(
@@ -62,26 +62,12 @@ class FeedFragment : Fragment() {
 
         storiesAdapter.onItmClick = { itemView ->
             startActivity(CameraActivity.startIntent(requireContext()))
+//            activity?.finish()
         }
 
         feedSubTitle.setOnClickListener {
-            startActivityForResult(CameraActivity.startIntent(this.activity!!), IMAGE_ACTIVITY_REQUEST_CODE)
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == IMAGE_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null) {
-                    var newStory = Image(7,((data.getSerializableExtra(CameraActivity.CAPTURED_IMAGE) as File).absolutePath).toInt())
-//                    storiesDataList.add(newStory)
-//                    storiesAdapter.submitList(null)
-//                    storiesAdapter.submitList(storiesDataList)
-                }
-            }
-        }
-    }
 
 }

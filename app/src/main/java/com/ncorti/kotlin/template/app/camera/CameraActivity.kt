@@ -125,10 +125,16 @@ class CameraActivity : AppCompatActivity() {
                     }
 
                     override fun onImageSaved(file: File) {
-                        var intent = Intent()
-                        var data = intent.putExtra(CAPTURED_IMAGE, file)
-                        setResult(Activity.RESULT_OK, data)
-                        finish()
+                        if(ShareMediaActivity.firstOpen) {
+                            startActivity(ShareMediaActivity.buildIntent(this@CameraActivity, file.absolutePath))
+                            finish()
+                        }
+                        else {
+                            var intent = Intent()
+                            var data = intent.putExtra(CAPTURED_IMAGE, file.absolutePath)
+                            setResult(Activity.RESULT_OK, data)
+                            finish()
+                        }
                         val msg = "Photo capture succeeded: ${file.absolutePath}"
                         Log.d("CameraXApp", msg)
                         camera_preview.post {
