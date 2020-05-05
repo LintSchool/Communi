@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 import com.ncorti.kotlin.template.app.R
+import kotlinx.android.synthetic.main.feedbottomsheet.*
 import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment() {
@@ -36,6 +38,7 @@ class FeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUp()
+
     }
 
     fun setUp() {
@@ -151,7 +154,20 @@ class FeedFragment : Fragment() {
             ).show()
         }
 
+        feedSubTitle.setOnClickListener {
+            var bottomSheetBehavior = BottomSheetBehavior.from(feedbottomsheet)
+                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
+                } else {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED)
+                }
+
+        }
+
+
+        }
+
 
     }
 
-}
+
