@@ -19,6 +19,8 @@ object Versions {
     const val CAMERAX = "1.0.0-alpha03"
     const val CAMERAX_EXTENSIONS = "1.0.0-alpha03"
     const val CAMERAX_VIEW = "1.0.0-alpha03"
+    const val PICASSO_VERSION = "2.71828"
+
 }
 
 object BuildPluginsVersion {
@@ -40,6 +42,7 @@ object SupportLibs {
     const val CAMERAX = "androidx.camera:camera-core:${Versions.CAMERAX}"
     const val CAMERAX_EXTENSIONS = "androidx.camera:camera-extensions:${Versions.CAMERAX_EXTENSIONS}"
     const val CAMERAX_VIEW = "androidx.camera:camera-view:${Versions.CAMERAX_VIEW}"
+    const val PICASSO = "com.squareup.picasso:picasso:${Versions.PICASSO_VERSION}"
 }
 
 object TestingLib {
