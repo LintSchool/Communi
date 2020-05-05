@@ -1,4 +1,4 @@
-package com.ncorti.kotlin.template.app
+package com.lintschool.communi
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -20,12 +20,11 @@ class MainActivityTest {
     @get:Rule
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
+    /**
+     * Example test function
+     */
     @Test
     fun typeANumber_resultIsDisplayed() {
-        onView(withId(R.id.edit_text_factorial)).perform(typeText("1"), closeSoftKeyboard())
-        onView(withId(R.id.button_compute)).perform(click())
 
-        onView(withId(R.id.text_result)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_result)).check(matches(withText("1")))
     }
 }
