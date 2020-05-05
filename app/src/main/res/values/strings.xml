@@ -17,4 +17,7 @@
     <string name="ask_for_sign_in">Already have an account? sign in.</string>
     <string name="sign_up_via">or signup via</string>
     <string name="sign_up">Sign Up</string>
+    <string name="more_info_desc">We just need \nsome more\ninformation.</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>
