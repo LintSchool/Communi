@@ -125,6 +125,10 @@ class CameraActivity : AppCompatActivity() {
                     }
 
                     override fun onImageSaved(file: File) {
+                        var intent = Intent()
+                        var data = intent.putExtra(CAPTURED_IMAGE, file)
+                        setResult(Activity.RESULT_OK, data)
+                        finish()
                         val msg = "Photo capture succeeded: ${file.absolutePath}"
                         Log.d("CameraXApp", msg)
                         camera_preview.post {
@@ -166,7 +170,7 @@ class CameraActivity : AppCompatActivity() {
         val centerY = camera_preview.height / 2f
 
         val rotationDegrees =
-            when (findViewById<TextureView>(R.id.camera_preview).display.rotation) {
+            when (camera_preview.display.rotation) {
                 Surface.ROTATION_0 -> 0
                 Surface.ROTATION_90 -> 90
                 Surface.ROTATION_180 -> 180
@@ -178,7 +182,10 @@ class CameraActivity : AppCompatActivity() {
         camera_preview.setTransform(matrix)
     }
 
+
+
     companion object {
         fun startIntent(context: Context) = Intent(context, CameraActivity::class.java)
+        var CAPTURED_IMAGE = "captured_image"
     }
 }
