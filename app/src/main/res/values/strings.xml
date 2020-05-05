@@ -13,4 +13,8 @@
     <string name="login_via">or login via</string>
     <string name="google">Google</string>
     <string name="facebook">Facebook</string>
+    <string name="sign_up_desc">Sign up for a \nnew account.</string>
+    <string name="ask_for_sign_in">Already have an account? sign in.</string>
+    <string name="sign_up_via">or signup via</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
