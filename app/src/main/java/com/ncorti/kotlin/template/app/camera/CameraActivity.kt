@@ -1,6 +1,7 @@
 package com.ncorti.kotlin.template.app.camera
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,7 +10,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.util.Size
 import android.view.Surface
 import android.view.TextureView
 import android.view.ViewGroup
@@ -27,6 +27,11 @@ class CameraActivity : AppCompatActivity() {
 
     val CAMERA_PERMISSION = Manifest.permission.CAMERA
     val CAMERA_PERMISSION_REQUEST_CODE = 101
+    val OPEN_SETTINGS_REQUEST_CODE = 102
+
+    private var lensFacing = CameraX.LensFacing.BACK
+    private var imageCapture: ImageCapture? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,30 +74,43 @@ class CameraActivity : AppCompatActivity() {
                         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
                         data = uri
                     }
-                    startActivity(intent)
+                    startActivityForResult(intent, OPEN_SETTINGS_REQUEST_CODE)
                 })
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == OPEN_SETTINGS_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            camera_preview.post { startCamera() }
+        }
+    }
 
     private fun startCamera() {
 
+        val preview = createPreviewUseCase()
 
-        val imageCaptureConfig = ImageCaptureConfig.Builder()
-            .apply {
-                // We don't set a resolution for image capture; instead, we
-                // select a capture mode which will infer the appropriate
-                // resolution based on aspect ration and requested mode
-                setCaptureMode(ImageCapture.CaptureMode.MIN_LATENCY)
-            }.build()
 
-        // Build the image capture use case and attach button click listener
-        val imageCapture = ImageCapture(imageCaptureConfig)
+        preview.setOnPreviewOutputUpdateListener {
+
+            val parent = camera_preview.parent as ViewGroup
+            parent.removeView(camera_preview)
+            parent.addView(camera_preview, 0)
+
+            camera_preview.surfaceTexture = it.surfaceTexture
+            updateTransform()
+        }
+
+        imageCapture = createImageCapture()
+
         capture_btn.setOnClickListener {
-            val file = File(externalMediaDirs.first(),
-                "${System.currentTimeMillis()}.jpg")
+            val file = File(
+                externalMediaDirs.first(),
+                "${System.currentTimeMillis()}.jpg"
+            )
 
-            imageCapture.takePicture(file, Executors.newFixedThreadPool(3),
+            (imageCapture as ImageCapture).takePicture(file, Executors.newSingleThreadExecutor(),
                 object : ImageCapture.OnImageSavedListener {
                     override fun onError(
                         imageCaptureError: ImageCapture.ImageCaptureError,
@@ -107,7 +125,6 @@ class CameraActivity : AppCompatActivity() {
                     }
 
                     override fun onImageSaved(file: File) {
-                        //TODO: Navigate
                         val msg = "Photo capture succeeded: ${file.absolutePath}"
                         Log.d("CameraXApp", msg)
                         camera_preview.post {
@@ -117,57 +134,49 @@ class CameraActivity : AppCompatActivity() {
                 })
         }
 
-        // Bind use cases to lifecycle
-        // If Android Studio complains about "this" being not a LifecycleOwner
-        // try rebuilding the project or updating the appcompat dependency to
-        // version 1.1.0 or higher.
-        CameraX.bindToLifecycle(this, createPreviewUseCase(), imageCapture)
+        CameraX.bindToLifecycle(this, preview, imageCapture)
+    }
+
+    private fun createImageCapture(): ImageCapture {
+        val imageCaptureConfig = ImageCaptureConfig.Builder()
+            .apply {
+                setLensFacing(lensFacing)
+                setTargetRotation(camera_preview.display.rotation)
+                setCaptureMode(ImageCapture.CaptureMode.MAX_QUALITY)
+            }.build()
+
+        // Build the image capture use case and attach button click listener
+        return ImageCapture(imageCaptureConfig)
     }
 
     private fun createPreviewUseCase(): Preview {
 
         val previewConfig = PreviewConfig.Builder().apply {
-            setTargetResolution(Size(640, 480))
+            setLensFacing(lensFacing)
+            setTargetRotation(camera_preview.display.rotation)
         }.build()
 
-
-        // Build the viewfinder use case
-        val preview = Preview(previewConfig)
-
-        // Every time the viewfinder is updated, recompute layout
-        preview.setOnPreviewOutputUpdateListener {
-
-            // To update the SurfaceTexture, we have to remove it and re-add it
-            val parent = camera_preview.parent as ViewGroup
-            parent.removeView(camera_preview)
-            parent.addView(camera_preview, 0)
-
-            camera_preview.surfaceTexture = it.surfaceTexture
-            updateTransform()
-        }
-
-        return preview
+        return Preview(previewConfig)
     }
-//
-private fun updateTransform() {
-    val matrix = Matrix()
 
-    val centerX = camera_preview.width / 2f
-    val centerY = camera_preview.height / 2f
+    private fun updateTransform() {
+        val matrix = Matrix()
 
-    val rotationDegrees = when (findViewById<TextureView>(R.id.camera_preview).display.rotation) {
-        Surface.ROTATION_0 -> 0
-        Surface.ROTATION_90 -> 90
-        Surface.ROTATION_180 -> 180
-        Surface.ROTATION_270 -> 270
-        else -> return
+        val centerX = camera_preview.width / 2f
+        val centerY = camera_preview.height / 2f
+
+        val rotationDegrees =
+            when (findViewById<TextureView>(R.id.camera_preview).display.rotation) {
+                Surface.ROTATION_0 -> 0
+                Surface.ROTATION_90 -> 90
+                Surface.ROTATION_180 -> 180
+                Surface.ROTATION_270 -> 270
+                else -> return
+            }
+        matrix.postRotate(-rotationDegrees.toFloat(), centerX, centerY)
+
+        camera_preview.setTransform(matrix)
     }
-    matrix.postRotate(-rotationDegrees.toFloat(), centerX, centerY)
-
-    camera_preview.setTransform(matrix)
-}
-
-
 
     companion object {
         fun startIntent(context: Context) = Intent(context, CameraActivity::class.java)
