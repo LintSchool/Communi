@@ -148,19 +148,12 @@ class FeedFragment : Fragment() {
 
 
         storiesAdapter.onItmClick = { itemView ->
-            Toast.makeText(
-                activity,
-                storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            startActivity(StoriesActivity.startIntent(requireContext()))
         }
 
         storiesAdapter.onAddMyStoryItmClick = { itemView ->
-            Toast.makeText(
-                activity,
-                storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            startActivity(CameraActivity.startIntent(requireContext()))
+
         }
 
 

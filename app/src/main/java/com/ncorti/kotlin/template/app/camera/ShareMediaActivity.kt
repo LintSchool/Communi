@@ -75,8 +75,12 @@ class ShareMediaActivity : AppCompatActivity() {
         }
 
         capturedAdapter.onItemRemove = {
-            imagesList.removeAt(it)
-            capturedAdapter.notifyItemRemoved(it)
+            if(imagesList.size == 2 ) {
+                finish()
+            } else {
+                imagesList.removeAt(it)
+                capturedAdapter.notifyItemRemoved(it)
+            }
         }
 
         back_iv.setOnClickListener {
