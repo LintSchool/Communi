@@ -9,6 +9,7 @@ object Versions {
     const val ANDROIDX_TEST = "1.2.0"
     const val APPCOMPAT = "1.1.0"
     const val CONSTRAINT_LAYOUT = "1.1.3"
+    const val COORDINATOR_LAYOUT = "1.1.0"
     const val CORE_KTX = "1.2.0"
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
@@ -25,8 +26,12 @@ object BuildPluginsVersion {
 
 object SupportLibs {
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
-    const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
+    const val ANDROIDX_CONSTRAINT_LAYOUT =
+        "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val ANDROIDX_COORDINATOR_LAYOUT =
+        "androidx.coordinatorlayout:coordinatorlayout:${Versions.COORDINATOR_LAYOUT}"
+    const val ANDROID_SUPPORT_DESIGN = "com.android.support:design:${Sdk.TARGET_SDK_VERSION},0,0"
 }
 
 object TestingLib {

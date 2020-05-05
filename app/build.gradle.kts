@@ -46,6 +46,10 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
     implementation(SupportLibs.ANDROIDX_CORE_KTX)
 
+    // bottom sheet dependencies
+    implementation(SupportLibs.ANDROIDX_COORDINATOR_LAYOUT)
+    implementation(SupportLibs.ANDROID_SUPPORT_DESIGN)
+
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

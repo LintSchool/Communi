@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- feed detail comment style -->
+    <style name="Body1MediumDefault01LeftAligned">
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">3.3sp</item>
+        <item name="android:textColor">#c7c7d4</item>
+    </style>
+
 </resources>
