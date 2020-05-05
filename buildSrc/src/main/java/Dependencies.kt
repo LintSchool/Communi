@@ -21,6 +21,8 @@ object Versions {
     const val CAMERAX_VIEW = "1.0.0-alpha03"
     const val PICASSO_VERSION = "2.71828"
 
+    const val CIRCLE_IMAGE = "3.1.0"
+    const val SHIMMER = "0.4.0"
 }
 
 object BuildPluginsVersion {
@@ -39,6 +41,8 @@ object SupportLibs {
     const val ANDROIDX_VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Versions.VIEWPAGER2}"
     const val GOOGLE_ANDROID_MATERIAL = "com.google.android.material:material:${Versions.ANDROID_MATERIAL}"
     const val ANDROIDX_LEGACY =  "androidx.legacy:legacy-support-v4:${Versions.LEGACY}"
+    const val CIRCLE_IMAGE_VIEW = "de.hdodenhof:circleimageview:${Versions.CIRCLE_IMAGE}"
+    const val FACEBOOK_SHIMMER = "com.facebook.shimmer:shimmer:${Versions.SHIMMER}"
     const val CAMERAX = "androidx.camera:camera-core:${Versions.CAMERAX}"
     const val CAMERAX_EXTENSIONS = "androidx.camera:camera-extensions:${Versions.CAMERAX_EXTENSIONS}"
     const val CAMERAX_VIEW = "androidx.camera:camera-view:${Versions.CAMERAX_VIEW}"

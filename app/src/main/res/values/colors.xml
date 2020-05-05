@@ -7,4 +7,8 @@
     <color name="color_gray">#d1d4d7</color>
     <color name="color_greys_01_dark_01_100">#4c4b5e</color>
     <color name="color_solid_secondary">#122b5b</color>
+    <color name="color_greys_04_extralight_01_100">#E4E5ED</color>
+    <color name="color_greys_03">#BABABC</color>
+    <color name="colorPrimary32">#5166CBC9</color>
+
 </resources>

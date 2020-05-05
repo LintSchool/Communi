@@ -11,4 +11,9 @@
     <string name="send_photo">Send Photo</string>
     <string name="camera_permission_snackbar_text">This Feature requires permission</string>
     <string name="turn_on">Turn On</string>
+
+    <string name="feed">Feed</string>
+    <string name="events">Events</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
 </resources>

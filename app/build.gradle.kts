@@ -55,6 +55,8 @@ dependencies {
     implementation(SupportLibs.CAMERAX_EXTENSIONS)
     implementation(SupportLibs.CAMERAX_VIEW)
 
+    implementation(SupportLibs.CIRCLE_IMAGE_VIEW)
+    implementation(SupportLibs.FACEBOOK_SHIMMER)
 
     testImplementation(TestingLib.JUNIT)
 
