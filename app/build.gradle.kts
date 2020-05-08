@@ -45,7 +45,9 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_APPCOMPAT)
     implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
     implementation(SupportLibs.ANDROIDX_CORE_KTX)
-
+    implementation(SupportLibs.MOTION_LAYOUT)
+    implementation(SupportLibs.ANDROID_MATERIAL)
+    implementation(SupportLibs.CARD_VIEW)
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

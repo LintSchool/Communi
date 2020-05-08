@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Kotlin Android Template</string>
-    <string name="title">This is just a template</string>
-    <string name="description">You can compute a factorial using the library-kotlin module. The result will be also shown in a notification using the library-android module.</string>
-    <string name="factorial_hint">Insert a number to compute his factorial</string>
-    <string name="compute">Compute</string>
-    <string name="notification_title">The Result is:</string>
+    <string name="app_name">community</string>
+    <string name="welcomeMessage">What are you up for, Kate?</string>
+    <string name="events">There are happening 87 events around you today.</string>
+    <string name="welcome">What are you up for, Kate?</string>
+    <string name="descriptionText"><![CDATA[Long time no see, folks! \nSince it has been already a year, we finally have a reason to meet up again. Join our legendary YF Aftershow Party for some boozy drinks & funky tunes.  See you there.]]></string>
 </resources>

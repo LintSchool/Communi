@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
             text_result.text = result
             text_result.visibility = View.VISIBLE
 
-            notificationUtil.showNotification(
-                context = this,
-                title = getString(R.string.notification_title),
-                message = result
-            )
+//            notificationUtil.showNotification(
+//                context = this,
+//                title = getString(R.string.notification_title),
+//                message = result
+//            )
         }
     }
 }

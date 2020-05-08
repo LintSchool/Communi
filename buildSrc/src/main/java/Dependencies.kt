@@ -5,6 +5,7 @@ object Sdk {
 }
 
 object Versions {
+    const val ANDROID_MATERIAL = "1.1.0"
     const val ANDROIDX_TEST_EXT = "1.1.1"
     const val ANDROIDX_TEST = "1.2.0"
     const val APPCOMPAT = "1.1.0"
@@ -13,6 +14,8 @@ object Versions {
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
+    const val MOTION_LAYOUT = "2.0.0-beta4"
+    const val CARD_VIEW = "1.0.0"
 }
 
 object BuildPluginsVersion {
@@ -24,9 +27,13 @@ object BuildPluginsVersion {
 }
 
 object SupportLibs {
+    const val CARD_VIEW = "androidx.cardview:cardview:${Versions.CARD_VIEW}"
+    const val ANDROID_MATERIAL = "com.google.android.material:material:${Versions.ANDROID_MATERIAL}"
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val MOTION_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.MOTION_LAYOUT}"
+
 }
 
 object TestingLib {
