@@ -1,6 +1,5 @@
 package com.ncorti.kotlin.template.app.Main
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +12,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ncorti.kotlin.template.app.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUp()
-
     }
 
     fun setUp() {
-
         var viewPagerAdapter = MainPagerAdapter(this)
         mainViewPager.adapter = viewPagerAdapter
         mainViewPager.setCurrentItem(0, false)
@@ -51,17 +47,15 @@ class MainActivity : AppCompatActivity() {
                         getDrawable(R.drawable.ic_grid)
                     }
                 }
-
-            }).attach()
+            }
+        ).attach()
 
         mainTabView.getTabAt(0)?.select()
         mainTabView.getTabAt(0)?.text = getString(R.string.feed)
         mainTabView.getTabAt(0)?.icon?.setTint(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary))
 
-
-        mainTabView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        mainTabView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
-
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -70,7 +64,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-
                 tab?.text = when (tab?.position) {
                     0 -> {
                         getString(R.string.feed)
@@ -89,11 +82,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 tab?.icon?.setTint(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary))
-
             }
-
         })
-        //To allow equal width for each tab, while (TabLayout.MODE_SCROLLABLE)
+        // To allow equal width for each tab, while (TabLayout.MODE_SCROLLABLE)
         val slidingTabStrip = mainTabView.getChildAt(0) as ViewGroup
         for (i in 0 until mainTabView.getTabCount()) {
             val tab: View = slidingTabStrip.getChildAt(i)
@@ -102,12 +93,11 @@ class MainActivity : AppCompatActivity() {
             layoutParams.weight = 1f
             tab.setLayoutParams(layoutParams)
         }
-
     }
 }
 
-//private val notificationUtil: NotificationUtil by lazy { NotificationUtil(this) }
-//button_compute.setOnClickListener {
+// private val notificationUtil: NotificationUtil by lazy { NotificationUtil(this) }
+// button_compute.setOnClickListener {
 //    val input = edit_text_factorial.text.toString().toInt()
 //    val result = FactorialCalculator.computeFactorial(input).toString()
 //
@@ -119,4 +109,4 @@ class MainActivity : AppCompatActivity() {
 //        title = getString(R.string.notification_title),
 //        message = result
 //    )
-//}
+// }

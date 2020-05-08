@@ -1,39 +1,32 @@
 package com.ncorti.kotlin.template.app.Feed
 
-import android.app.Activity
-import android.content.Intent
-import android.content.ClipData
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-
 import com.ncorti.kotlin.template.app.R
 import com.ncorti.kotlin.template.app.camera.CameraActivity
 import com.ncorti.kotlin.template.app.stories.StoriesActivity
 import kotlinx.android.synthetic.main.fragment_feed.*
-import java.io.File
 import kotlinx.android.synthetic.main.shimmer_feed.*
 
 class FeedFragment : Fragment() {
 
     lateinit var storiesAdapter: StoriesAdapter
-    lateinit var storiesDataList : MutableList<Image>
-    lateinit var postsAdapter : PostsAdapter
+    lateinit var storiesDataList: MutableList<Image>
+    lateinit var postsAdapter: PostsAdapter
 
     companion object {
         fun newInstance(): FeedFragment = FeedFragment()
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -47,7 +40,6 @@ class FeedFragment : Fragment() {
     }
 
     fun setUp() {
-
 //        shimmer_post.visibility = View.VISIBLE
 //        shimmer_post.startShimmer()
 
@@ -57,9 +49,7 @@ class FeedFragment : Fragment() {
         feedTitle.text = getString(R.string.feed_title) + "ya 2y 7aga."
 
         feedSubTitle.setOnClickListener {
-
         }
-
 
         var postsList = listOf<Post>(
             Post(
@@ -81,7 +71,7 @@ class FeedFragment : Fragment() {
                 imagePath = null,
                 userName = "Kate",
                 userImagePath = R.drawable.download,
-                postText =  "ay 7aga ay 7aga ay 7aga ay 7agaga ay 7aga ay 7aga"
+                postText = "ay 7aga ay 7aga ay 7aga ay 7agaga ay 7aga ay 7aga"
             ),
             Post(
                 4,
@@ -116,7 +106,7 @@ class FeedFragment : Fragment() {
         postsAdapter = PostsAdapter()
         postsAdapter.submitList(postsList)
         feedsRV.adapter = postsAdapter
-        var layoutManager  = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         feedsRV.layoutManager = layoutManager
         feedsRV.addItemDecoration(PostItemDecorator(8))
@@ -128,7 +118,6 @@ class FeedFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-
 
         var storiesDataList = listOf<Image>(
             Image(0, null, true),
@@ -146,17 +135,12 @@ class FeedFragment : Fragment() {
         storiesRV.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-
         storiesAdapter.onItmClick = { itemView ->
             startActivity(StoriesActivity.startIntent(requireContext()))
         }
 
         storiesAdapter.onAddMyStoryItmClick = { itemView ->
             startActivity(CameraActivity.startIntent(requireContext()))
-
         }
-
-
     }
-
 }

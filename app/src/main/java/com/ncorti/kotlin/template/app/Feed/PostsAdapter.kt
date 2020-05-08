@@ -32,7 +32,6 @@ class PostsAdapter() : ListAdapter<Post, PostsViewHolder>(DiffUtilCallback()) {
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         holder.bind(getItem(position))
-
     }
 }
 
@@ -44,12 +43,12 @@ class PostsViewHolder(itemView: View, var onClick: ((view: View) -> Unit)) :
         itemView.profile_image.setImageResource(itemData.userImagePath)
         itemView.userName.text = itemData.userName
         itemView.postTV.text = itemData.postText
-        if (itemData.imagePath != null)
+        if (itemData.imagePath != null) {
             itemView.constraintContainer.setImageResource(itemData.imagePath!!)
+        }
 
         itemView.postContainer.setOnClickListener {
             onClick.invoke(itemView)
         }
-
     }
 }

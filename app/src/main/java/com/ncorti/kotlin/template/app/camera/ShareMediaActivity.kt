@@ -5,32 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ncorti.kotlin.template.app.R
-import com.squareup.picasso.Picasso
+import com.ncorti.kotlin.template.app.utils.loadImageUri
 import kotlinx.android.synthetic.main.activity_share_media.*
 
 class ShareMediaActivity : AppCompatActivity() {
 
-    val capturedAdapter = CapturedMediaAdapter()
-    var newImage : CapturedImage? = null
-    var imagesList = mutableListOf<Any>()
-
-    companion object {
-        private val IMAGE_ACTIVITY_REQUEST_CODE = 0
-        var NEW_IMAGE = "new image"
-
-        fun buildIntent(context: Context, imagePath: String): Intent {
-            val intent = Intent(context, ShareMediaActivity::class.java)
-            intent.putExtra(NEW_IMAGE, imagePath)
-            return intent
-
-        }
-
-
-    }
+    private val capturedAdapter = CapturedMediaAdapter()
+    private val adapterList = mutableListOf<Any>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,54 +23,56 @@ class ShareMediaActivity : AppCompatActivity() {
         setUp()
     }
 
-    fun setUp() {
-
-        capturedAdapter.onAddClicked = {
-            startActivityForResult(CameraActivity.startIntent(this), IMAGE_ACTIVITY_REQUEST_CODE)
-        }
-
-        captured_images_rv.adapter = capturedAdapter
-        captured_images_rv.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-        if (intent.getStringExtra(NEW_IMAGE) != null) {
-            newImage = CapturedImage(
-                2,
-                intent.getStringExtra(NEW_IMAGE)!!
-            )
-        }
-
-        imagesList.add(0, newImage!!)
-        imagesList.add("Placeholder for view type add")
-
-
-        capturedAdapter.submitList(imagesList)
-
-
-        if (newImage?.imagePath?.isNotEmpty() == true) {
-            Picasso.get().load("file//: ${newImage?.imagePath}")
-        }
-
-        capturedAdapter.onItemClick = { position ->
-            if ((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath != "")
-                Picasso.get()
-                    .load((capturedAdapter.currentList[position] as? CapturedImage)?.imagePath)
-                    .into(selected_photo_iv)
-        }
-
-        capturedAdapter.onItemRemove = {
-            if(imagesList.size == 2 ) {
-                finish()
-            } else {
-                imagesList.removeAt(it)
-                capturedAdapter.notifyItemRemoved(it)
+    private fun setUp() {
+        capturedAdapter.apply {
+            onAddClicked = {
+                startActivityForResult(
+                    CameraActivity.startIntent(this@ShareMediaActivity),
+                    IMAGE_ACTIVITY_REQUEST_CODE
+                )
             }
+
+            onItemClick = {
+                selected_photo_iv.loadImageUri((adapterList[it] as CapturedImage).imagePath)
+            }
+
+            onItemRemove = {
+                if (currentList.size == 2) {
+                    finish()
+                } else {
+                    if (lastSelected == it) {
+                        if (lastSelected == adapterList.size - 2) {
+                            lastSelected -= 1
+                        } else {
+                            lastSelected += 1
+                        }
+                    }
+                    selected_photo_iv.loadImageUri((adapterList[lastSelected] as CapturedImage).imagePath)
+                    adapterList.removeAt(it)
+                    capturedAdapter.notifyItemRemoved(it)
+                }
+            }
+
+            submitList(adapterList)
         }
+
+        captured_images_rv.apply {
+            adapter = capturedAdapter
+            layoutManager =
+                LinearLayoutManager(this@ShareMediaActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        if (intent.getParcelableExtra<Uri>(NEW_IMAGE) != null) {
+            val imageUri = intent.getParcelableExtra<Uri>(NEW_IMAGE)
+            adapterList.add(CapturedImage(0, imageUri!!))
+            selected_photo_iv.loadImageUri(imageUri)
+        }
+        adapterList.add("Placeholder for view type add")
+        capturedAdapter.notifyDataSetChanged()
 
         back_iv.setOnClickListener {
             onBackPressed()
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -94,18 +80,17 @@ class ShareMediaActivity : AppCompatActivity() {
 
         if (requestCode == IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                if (data != null) {
-                    imagesList.add(
-                        0, CapturedImage(
+                if (data?.getParcelableExtra<Uri>(CameraActivity.CAPTURED_IMAGE) != null) {
+                    val imageUri = data.getParcelableExtra<Uri>(CameraActivity.CAPTURED_IMAGE)!!
+                    adapterList.add(
+                        0,
+                        CapturedImage(
                             1,
-                            data.getStringExtra(CameraActivity.CAPTURED_IMAGE)!!
+                            imageUri
                         )
                     )
                     capturedAdapter.notifyItemInserted(0)
-
-                    Picasso.get()
-                        .load(data.getStringExtra(CameraActivity.CAPTURED_IMAGE))
-                        .into(selected_photo_iv)
+                    selected_photo_iv.loadImageUri(imageUri)
                 }
             }
         }
@@ -113,5 +98,16 @@ class ShareMediaActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         finish()
+    }
+
+    companion object {
+        private const val IMAGE_ACTIVITY_REQUEST_CODE = 0
+        var NEW_IMAGE = "new image"
+
+        fun buildIntent(context: Context, imagePath: Uri): Intent {
+            val intent = Intent(context, ShareMediaActivity::class.java)
+            intent.putExtra(NEW_IMAGE, imagePath)
+            return intent
+        }
     }
 }

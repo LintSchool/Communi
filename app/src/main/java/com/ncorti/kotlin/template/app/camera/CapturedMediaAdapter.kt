@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ncorti.kotlin.template.app.R
-import com.squareup.picasso.Picasso
+import com.ncorti.kotlin.template.app.utils.loadImageUri
 import kotlinx.android.synthetic.main.item_captured.view.*
 
 class CapturedMediaAdapter :
@@ -19,7 +19,7 @@ class CapturedMediaAdapter :
     var onItemClick: ((position: Int) -> Unit)? = null
     var onItemRemove: ((position: Int) -> Unit)? = null
     var onAddClicked: (() -> Unit)? = null
-
+    var lastSelected = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -27,7 +27,6 @@ class CapturedMediaAdapter :
         val holder: RecyclerView.ViewHolder
 
         when (viewType) {
-
             VIEW_TYPE_MEDIA -> {
                 itemView = layoutInflater.inflate(R.layout.item_captured, parent, false)
                 holder = MediaViewHolder(itemView)
@@ -56,7 +55,6 @@ class CapturedMediaAdapter :
         }
     }
 
-
     inner class MediaViewHolder(
         itemView: View
     ) :
@@ -64,6 +62,7 @@ class CapturedMediaAdapter :
 
         init {
             itemView.capturedImageContainer.setOnClickListener {
+                lastSelected = adapterPosition
                 onItemClick?.invoke(
                     adapterPosition
                 )
@@ -71,10 +70,8 @@ class CapturedMediaAdapter :
             itemView.remove_iv.setOnClickListener { onItemRemove?.invoke(adapterPosition) }
         }
 
-        fun bind(itemData: CapturedImage) {
-            if (itemData.imagePath != "")
-                Picasso.get().load(itemData.imagePath).into(itemView.captured_img)
-
+        fun bind(item: CapturedImage) {
+            itemView.iv_captured.loadImageUri(item.imagePath)
         }
     }
 
@@ -95,6 +92,5 @@ class CapturedMediaAdapter :
         override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
             return (oldItem as? CapturedImage) == (newItem as? CapturedImage)
         }
-
     }
 }

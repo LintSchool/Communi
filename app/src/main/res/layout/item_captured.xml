@@ -18,9 +18,10 @@
         app:cardElevation="0dp">
 
         <ImageView
-            android:id="@+id/captured_img"
+            android:id="@+id/iv_captured"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:contentDescription="@null"/>
 
     </androidx.cardview.widget.CardView>
 

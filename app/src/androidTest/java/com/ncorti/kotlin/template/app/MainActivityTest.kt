@@ -11,7 +11,8 @@ class MainActivityTest {
 
     @get:Rule
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(
-        MainActivity::class.java)
+        MainActivity::class.java
+    )
 
 //    @Test
 //    fun typeANumber_resultIsDisplayed() {

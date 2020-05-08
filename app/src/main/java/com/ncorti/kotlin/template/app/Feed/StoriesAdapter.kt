@@ -23,20 +23,17 @@ class StoriesAdapter() : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCa
     }
 
     override fun getItemViewType(position: Int): Int {
-
         return if (getItem(position).addStory) ADD_STORY_TYPE else STORY
     }
 
     class DiffUtilsCallback() : DiffUtil.ItemCallback<Image>() {
         override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
             return if (oldItem.addStory && newItem.addStory) oldItem.id == newItem.id else if (!oldItem.addStory && !newItem.addStory) oldItem.id == newItem.id else false
-
         }
 
         override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
             return if (oldItem.addStory && newItem.addStory) oldItem == newItem else if (!oldItem.addStory && !newItem.addStory) oldItem == newItem else false
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,7 +52,6 @@ class StoriesAdapter() : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCa
             }
         }
 
-
         return viewHolder
     }
 
@@ -65,19 +61,15 @@ class StoriesAdapter() : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCa
             is StoryViewHolder -> holder.bind(getItem(position))
         }
     }
-
 }
 
 class StoryViewHolder(itemView: View, var onItemClicked: ((view: View) -> Unit)? = null) :
     RecyclerView.ViewHolder(itemView) {
 
     fun bind(itemData: Image) {
-
         itemView.storyImage.setImageResource(itemData.imagePath!!)
 
         itemView.storyContainer.setOnClickListener { onItemClicked?.invoke(itemView) }
-
-
     }
 }
 
@@ -87,14 +79,10 @@ class AddStoryViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(itemData: Image) {
-
         itemView.addStoryBtn.visibility = View.VISIBLE
         if (itemData.imagePath != null)
             itemView.storyImage.setImageResource(itemData.imagePath!!)
 
-
         itemView.storyContainer.setOnClickListener { onAddStoryItemClicked?.invoke(itemView) }
-
-
     }
 }
