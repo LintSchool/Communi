@@ -1,209 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl_feed_comments"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_feed_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@drawable/test"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_back_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="4dp"
-            android:src="@drawable/ic_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_feed_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="42dp"
-            android:layout_marginEnd="16dp"
-            android:letterSpacing="0.01"
-            android:lineSpacingExtra="2.7sp"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:text="Missing Chaoyang"
-            android:textColor="@color/color_feed_info"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_feed_data"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.03"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_back_image" />
-
-        <TextView
-            android:id="@+id/tv_feed_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:letterSpacing="0.03"
-            android:lineSpacingExtra="2.7sp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="Paul Williams, 02. Nov 2018"
-            android:textColor="@color/color_feed_info"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_feed_text" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutBottomSheet"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:background="@drawable/upper_rounded_color_bottom_sheet"
-        android:orientation="vertical"
-        app:behavior_peekHeight="300dp"
-        app:layout_behavior="@string/bottom_sheet_behavior">
-
-        <View
-            android:id="@+id/vw_separator"
-            android:layout_width="40dp"
-            android:layout_height="4dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/color_greys_03_light_01_100"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_comments"
-            style="@style/Body1MediumDefault01LeftAligned"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:text="Comments"
-            app:layout_constraintBottom_toTopOf="@id/rv_comments_list"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vw_separator" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_comments_list"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_comments" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_like_btn"
-                android:layout_width="wrap_content"
+                android:id="@+id/iv_feed_image"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="16dp"
-                android:src="@drawable/ic_like"
-                app:layout_constraintBottom_toTopOf="@id/vw_bottom_separator"
-                app:layout_constraintEnd_toStartOf="@+id/ll_comment_layout"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/test"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <LinearLayout
-                android:id="@+id/ll_comment_layout"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/iv_back_image"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                app:layout_constraintBottom_toTopOf="@id/vw_bottom_separator"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="3"
-                app:layout_constraintStart_toEndOf="@+id/iv_like_btn"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/et_comment_text"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="3"
-                    android:background="@null"
-                    android:hint="type something ..."
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:padding="8dp" />
-
-                <ImageView
-                    android:id="@+id/iv_upload_photo"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="1"
-                    android:padding="12dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_camera" />
-
-                <ImageView
-                    android:id="@+id/iv_submit_comment"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_color_submit_btn_disable"
-                    android:padding="16dp"
-                    android:src="@drawable/ic_check_mark" />
-
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/vw_bottom_separator"
-                android:layout_width="48dp"
-                android:layout_height="4dp"
-                android:layout_marginBottom="8dp"
-                android:background="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                android:src="@drawable/ic_left"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_comment_layout" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_feed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="16dp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="2.7sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp"
+                android:text="Missing Chaoyang"
+                android:textColor="@color/color_feed_info"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_feed_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_back_image" />
+
+            <TextView
+                android:id="@+id/tv_feed_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="2.7sp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Paul Williams, 02. Nov 2018"
+                android:textColor="@color/color_feed_info"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_feed_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>
