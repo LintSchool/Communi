@@ -22,3 +22,7 @@ fun View.showSnackbar(
 fun ImageView.loadImageUri(imageUri: Uri) {
     Glide.with(this.context).load(imageUri).into(this)
 }
+
+fun ImageView.loadImageRes(imageRes: Int) {
+    Glide.with(this.context).load(imageRes).into(this)
+}

@@ -16,4 +16,7 @@
     <string name="events">Events</string>
     <string name="chat">Chat</string>
     <string name="profile">Profile</string>
+
+    <string name="stories_counter">%1$d/%2$d</string>
 </resources>
+
