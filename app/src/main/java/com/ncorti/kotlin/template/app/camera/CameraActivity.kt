@@ -30,14 +30,6 @@ import kotlinx.android.synthetic.main.activity_camera.*
 
 class CameraActivity : AppCompatActivity() {
 
-    private val REQUIRED_PERMISSIONS = arrayOf(
-        Manifest.permission.CAMERA,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-    )
-    val CAMERA_PERMISSION = Manifest.permission.CAMERA
-    val PERMISSIONS_REQUEST_CODE = 101
-    val OPEN_SETTINGS_REQUEST_CODE = 102
-
     private var lensFacing = CameraX.LensFacing.BACK
     private var imageCapture: ImageCapture? = null
 
@@ -50,11 +42,40 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-
         requestPermissions()
 
         capture_btn.setOnClickListener {
-            capturePhoto()
+            val file = createFile(this)
+
+            imageCapture?.takePicture(
+                file, Executors.newSingleThreadExecutor(),
+                object : ImageCapture.OnImageSavedListener {
+                    override fun onError(
+                        imageCaptureError: ImageCapture.ImageCaptureError,
+                        message: String,
+                        exc: Throwable?
+                    ) {
+                        Log.d(this@CameraActivity::class.java.simpleName, "Error Capturing image $message")
+                    }
+
+                    override fun onImageSaved(file: File) {
+                        val uri = FileProvider.getUriForFile(this@CameraActivity, "$packageName.provider", file)
+                        callingActivity?.let {
+                            val intent = Intent()
+                            val data = intent.putExtra(CAPTURED_IMAGE, uri)
+                            setResult(Activity.RESULT_OK, data)
+                            finish()
+                        } ?: run {
+                            startActivity(
+                                ShareMediaActivity.buildIntent(
+                                    this@CameraActivity,
+                                    uri
+                                )
+                            )
+                        }
+                    }
+                }
+            )
         }
 
         close_iv.setOnClickListener {
@@ -62,19 +83,14 @@ class CameraActivity : AppCompatActivity() {
         }
 
         camera_toggle_iv.setOnClickListener {
-            toggleCameraLens()
+            if (lensFacing == CameraX.LensFacing.BACK) {
+                lensFacing = CameraX.LensFacing.FRONT
+            } else {
+                lensFacing = CameraX.LensFacing.BACK
+            }
+
+            camera_preview.post { startCamera() }
         }
-    }
-
-    private fun toggleCameraLens() {
-        if(lensFacing == CameraX.LensFacing.BACK) {
-            lensFacing = CameraX.LensFacing.FRONT
-        } else {
-            lensFacing = CameraX.LensFacing.BACK
-        }
-
-        camera_preview.post { startCamera() }
-
     }
 
     override fun onRequestPermissionsResult(
@@ -116,14 +132,13 @@ class CameraActivity : AppCompatActivity() {
         } else {
             ActivityCompat.requestPermissions(
                 this,
-                REQUIRED_PERMISSIONS,
+                REQUIRED_PERMISSIONS_LIST,
                 PERMISSIONS_REQUEST_CODE
             )
         }
     }
 
     private fun startCamera() {
-
         CameraX.unbindAll()
 
         val preview = createPreviewUseCase()
@@ -171,10 +186,10 @@ class CameraActivity : AppCompatActivity() {
 
         val rotationDegrees =
             when (camera_preview.display.rotation) {
-                Surface.ROTATION_0 -> 0
-                Surface.ROTATION_90 -> 90
-                Surface.ROTATION_180 -> 180
-                Surface.ROTATION_270 -> 270
+                Surface.ROTATION_0 -> ROTATION_0
+                Surface.ROTATION_90 -> ROTATION_90
+                Surface.ROTATION_180 -> ROTATION_180
+                Surface.ROTATION_270 -> ROTATION_270
                 else -> return
             }
         matrix.postRotate(-rotationDegrees.toFloat(), centerX, centerY)
@@ -182,45 +197,24 @@ class CameraActivity : AppCompatActivity() {
         camera_preview.setTransform(matrix)
     }
 
-    private fun capturePhoto() {
-        val file = createFile(this)
-
-        imageCapture?.takePicture(
-            file, Executors.newSingleThreadExecutor(),
-            object : ImageCapture.OnImageSavedListener {
-                override fun onError(
-                    imageCaptureError: ImageCapture.ImageCaptureError,
-                    message: String,
-                    exc: Throwable?
-                ) {
-                    Log.d(this@CameraActivity::class.java.simpleName, "Error Capturing image ${message}")
-                }
-
-                override fun onImageSaved(file: File) {
-                    val uri = FileProvider.getUriForFile(this@CameraActivity, "$packageName.provider", file)
-                    callingActivity?.let {
-                        val intent = Intent()
-                        val data = intent.putExtra(CAPTURED_IMAGE, uri)
-                        setResult(Activity.RESULT_OK, data)
-                        finish()
-                    } ?: run {
-                        startActivity(
-                            ShareMediaActivity.buildIntent(
-                                this@CameraActivity,
-                                uri
-                            )
-                        )
-                    }
-                }
-            }
-        )
-    }
-
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS_LIST.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
     companion object {
+
+        const val ROTATION_0 = 0
+        const val ROTATION_90 = 90
+        const val ROTATION_180 = 180
+        const val ROTATION_270 = 270
+
+        private val REQUIRED_PERMISSIONS_LIST = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        const val PERMISSIONS_REQUEST_CODE = 101
+        const val OPEN_SETTINGS_REQUEST_CODE = 102
+
         fun startIntent(context: Context) = Intent(context, CameraActivity::class.java)
         var CAPTURED_IMAGE = "captured_image"
     }

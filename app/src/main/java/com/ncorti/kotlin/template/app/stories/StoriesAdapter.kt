@@ -10,22 +10,17 @@ import com.ncorti.kotlin.template.app.R
 import com.ncorti.kotlin.template.app.utils.loadImageRes
 import kotlinx.android.synthetic.main.add_story_rv_item.view.*
 import kotlinx.android.synthetic.main.item_current_story.view.*
-import java.lang.IllegalArgumentException
 
 class StoriesAdapter : ListAdapter<UserStories, RecyclerView.ViewHolder>(UserStoriesDiffUtil()) {
-
-    val VIEW_TYPE_PLAYING = 0
-    val VIEW_TYPE_NORMAL = 1
 
     var onItemClick: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
         val inflater = LayoutInflater.from(parent.context)
         val view: View
         val holder: RecyclerView.ViewHolder
 
-        when(viewType) {
+        when (viewType) {
             VIEW_TYPE_PLAYING -> {
                 view = inflater.inflate(R.layout.item_current_story, parent, false)
                 holder = PlayingStoriesViewHolder(view)
@@ -48,10 +43,10 @@ class StoriesAdapter : ListAdapter<UserStories, RecyclerView.ViewHolder>(UserSto
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if(currentList[position].playing) VIEW_TYPE_PLAYING else VIEW_TYPE_NORMAL
+        return if (currentList[position].playing) VIEW_TYPE_PLAYING else VIEW_TYPE_NORMAL
     }
 
-    inner class StoriesViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class StoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         init {
             itemView.setOnClickListener {
@@ -61,15 +56,19 @@ class StoriesAdapter : ListAdapter<UserStories, RecyclerView.ViewHolder>(UserSto
 
         fun bind(story: UserStories) {
             itemView.storyImage.loadImageRes(story.userImageRes)
-            itemView.storyImage.alpha = 0.4F
+            itemView.storyImage.alpha = itemsAlpha
         }
     }
 
-    inner class PlayingStoriesViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class PlayingStoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(story: UserStories) {
             itemView.user_iv.loadImageRes(story.userImageRes)
             itemView.user_name_tv.text = story.userName
-            itemView.story_counter_tv.text = itemView.context.getString(R.string.stories_counter, story.playingIndex+1 , story.stories.size)
+            itemView.story_counter_tv.text = itemView.context.getString(
+                R.string.stories_counter,
+                story.playingIndex + 1,
+                story.stories.size
+            )
         }
     }
 
@@ -81,6 +80,13 @@ class StoriesAdapter : ListAdapter<UserStories, RecyclerView.ViewHolder>(UserSto
         override fun areContentsTheSame(oldItem: UserStories, newItem: UserStories): Boolean {
             return oldItem == newItem
         }
+    }
 
+    companion object {
+
+        const val VIEW_TYPE_PLAYING = 0
+        const val VIEW_TYPE_NORMAL = 1
+
+        const val itemsAlpha = 0.4F
     }
 }

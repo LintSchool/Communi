@@ -13,9 +13,6 @@ import kotlinx.android.synthetic.main.item_captured.view.*
 class CapturedMediaAdapter :
     ListAdapter<Any, RecyclerView.ViewHolder>(CapturedMediaAdapter.CapturedImageDiffUtil()) {
 
-    val VIEW_TYPE_MEDIA = 0
-    val VIEW_TYPE_ADD = 1
-
     var onItemClick: ((position: Int) -> Unit)? = null
     var onItemRemove: ((position: Int) -> Unit)? = null
     var onAddClicked: (() -> Unit)? = null
@@ -92,5 +89,10 @@ class CapturedMediaAdapter :
         override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
             return (oldItem as? CapturedImage) == (newItem as? CapturedImage)
         }
+    }
+
+    companion object {
+        const val VIEW_TYPE_MEDIA = 0
+        const val VIEW_TYPE_ADD = 1
     }
 }

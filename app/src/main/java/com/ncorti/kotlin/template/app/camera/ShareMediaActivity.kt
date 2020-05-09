@@ -24,37 +24,7 @@ class ShareMediaActivity : AppCompatActivity() {
     }
 
     private fun setUp() {
-        capturedAdapter.apply {
-            onAddClicked = {
-                startActivityForResult(
-                    CameraActivity.startIntent(this@ShareMediaActivity),
-                    IMAGE_ACTIVITY_REQUEST_CODE
-                )
-            }
-
-            onItemClick = {
-                selected_photo_iv.loadImageUri((adapterList[it] as CapturedImage).imagePath)
-            }
-
-            onItemRemove = {
-                if (currentList.size == 2) {
-                    finish()
-                } else {
-                    if (lastSelected == it) {
-                        if (lastSelected == adapterList.size - 2) {
-                            lastSelected -= 1
-                        } else {
-                            lastSelected += 1
-                        }
-                    }
-                    selected_photo_iv.loadImageUri((adapterList[lastSelected] as CapturedImage).imagePath)
-                    adapterList.removeAt(it)
-                    capturedAdapter.notifyItemRemoved(it)
-                }
-            }
-
-            submitList(adapterList)
-        }
+        setupAdapter()
 
         captured_images_rv.apply {
             adapter = capturedAdapter
@@ -73,6 +43,38 @@ class ShareMediaActivity : AppCompatActivity() {
         back_iv.setOnClickListener {
             onBackPressed()
         }
+    }
+
+    private fun setupAdapter() {
+        capturedAdapter.onAddClicked = {
+            startActivityForResult(
+                CameraActivity.startIntent(this@ShareMediaActivity),
+                IMAGE_ACTIVITY_REQUEST_CODE
+            )
+        }
+
+        capturedAdapter.onItemClick = {
+            selected_photo_iv.loadImageUri((adapterList[it] as CapturedImage).imagePath)
+        }
+
+        capturedAdapter.onItemRemove = {
+            if (capturedAdapter.currentList.size == 2) {
+                finish()
+            } else {
+                if (capturedAdapter.lastSelected == it) {
+                    if (capturedAdapter.lastSelected == adapterList.size - 2) {
+                        capturedAdapter.lastSelected -= 1
+                    } else {
+                        capturedAdapter.lastSelected += 1
+                    }
+                }
+                selected_photo_iv.loadImageUri((adapterList[capturedAdapter.lastSelected] as CapturedImage).imagePath)
+                adapterList.removeAt(it)
+                capturedAdapter.notifyItemRemoved(it)
+            }
+        }
+
+        capturedAdapter.submitList(adapterList)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

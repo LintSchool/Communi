@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ncorti.kotlin.template.app.R
@@ -30,11 +30,9 @@ class StoriesActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-
-        timer = object : CountDownTimer(10000, 1000) {
+        timer = object : CountDownTimer(TIMER_DURATION, TIMER_INTERVAL) {
 
             override fun onFinish() {
-                //Play next, if not next finish activity
                 if (storyIndex == stories[userIndex].stories.size - 1) {
                     if (userIndex == stories.size - 1) {
                         finish()
@@ -43,7 +41,7 @@ class StoriesActivity : AppCompatActivity() {
                         stories[userIndex].playingIndex = -1
                         storiesAdapter.notifyItemChanged(userIndex)
 
-                        userIndex ++
+                        userIndex++
                         storyIndex = 0
                         loadCurrentStory(userIndex, storyIndex)
                     }
@@ -57,31 +55,25 @@ class StoriesActivity : AppCompatActivity() {
             }
 
             override fun onTick(p0: Long) {
+                Log.d(StoriesActivity::class.java.simpleName, "Stories timer $p0")
             }
         }
-
 
         stories_rv.apply {
             adapter = this@StoriesActivity.storiesAdapter
-            layoutManager = LinearLayoutManager(this@StoriesActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(this@StoriesActivity, LinearLayoutManager.HORIZONTAL, false)
         }
 
         storiesAdapter.apply {
-
             onItemClick = {
-
                 timer.cancel()
-
                 stories[userIndex].playing = false
                 notifyItemChanged(userIndex)
-
                 storyIndex = 0
                 userIndex = it
-
-
                 loadCurrentStory(userIndex, storyIndex)
             }
-
             submitList(stories)
         }
 
@@ -89,16 +81,18 @@ class StoriesActivity : AppCompatActivity() {
 
         reply_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
+                // Comment
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                // Comment
             }
 
             override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (charSequence.toString().isNotEmpty()) {
-                    send_iv.alpha = 1F
+                    send_iv.alpha = ACTIVE_BTN_ALPHA
                 } else {
-                    send_iv.alpha = 0.2F
+                    send_iv.alpha = INACTIVE_BTN_ALPHA
                 }
             }
         })
@@ -112,14 +106,15 @@ class StoriesActivity : AppCompatActivity() {
 
         storiesAdapter.notifyItemChanged(userIndex)
         timer.start()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
     }
 
     companion object {
+
+        const val ACTIVE_BTN_ALPHA = 1F
+        const val INACTIVE_BTN_ALPHA = 0.2F
+
+        const val TIMER_DURATION = 10000L
+        const val TIMER_INTERVAL = 1000L
 
         fun startIntent(context: Context): Intent {
             return Intent(context, StoriesActivity::class.java)
