@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.lintschool.communi.R
 import kotlinx.android.synthetic.main.fragment_bottom_sheet_feed_comments.*
 import kotlinx.android.synthetic.main.fragment_feed_comments.*
 

@@ -10,9 +10,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.ncorti.kotlin.template.app.R
+import com.lintschool.communi.R
 
-class BottomSheetFragment() : BottomSheetDialogFragment() {
+class BottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
