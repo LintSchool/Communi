@@ -1,0 +1,7 @@
+--verbose
+--reporter=plain
+--color
+--experimental
+--reporter=plain,output=/home/hassan_hamdi/AndroidStudioProjects/Communi-Android/library-kotlin/build/reports/ktlint/ktlintTestSourceSetFormat.txt
+-F
+src/test/java/com/ncorti/kotlin/template/library/FactorialCalculatorTest.kt

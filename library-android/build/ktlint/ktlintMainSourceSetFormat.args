@@ -1,0 +1,7 @@
+--verbose
+--reporter=plain
+--color
+--experimental
+--reporter=plain,output=/home/hassan_hamdi/AndroidStudioProjects/Communi-Android/library-android/build/reports/ktlint/ktlintMainSourceSetFormat.txt
+-F
+src/main/java/com/ncorti/kotlin/template/library/android/NotificationUtil.kt
