@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ncorti.kotlin.template.app.EventActivity
 import com.ncorti.kotlin.template.app.R
 import com.ncorti.kotlin.template.app.data.Event
-
 import kotlinx.android.synthetic.main.item_suggested_event.view.*
-
 
 class SuggestedEventAdapter(
     private var eventList: List<Event> = mutableListOf(),
@@ -23,10 +21,8 @@ class SuggestedEventAdapter(
         fun bindData(event: Event) {
             itemView.eventName.text = event.name
             itemView.eventDate.text = event.date
-
         }
         init {
-
             itemView.setOnClickListener {
                 onItemClick?.invoke(eventList[adapterPosition])
                 var intent = Intent(context,
@@ -34,25 +30,19 @@ class SuggestedEventAdapter(
                 context.startActivity(intent)
             }
         }
-
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestedEventViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_suggested_event, parent, false)
-
         return SuggestedEventViewHolder(itemView)
     }
-
     override fun getItemCount(): Int {
         return eventList.size
     }
-
     override fun onBindViewHolder(
         holder: SuggestedEventViewHolder,
         position: Int
     ) {
         holder.bindData(eventList[position])
     }
-
 }

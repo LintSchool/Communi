@@ -1,6 +1,5 @@
 package com.ncorti.kotlin.template.app.adapters
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,26 +16,20 @@ class AroundEventAdapter(
         fun bindData(event: Event) {
             itemView.eventName.text = event.name
             itemView.eventDate.text = event.date
-
         }
-
-
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArroundEventViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int)
+            : ArroundEventViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_arround_event, parent, false)
-
         return ArroundEventViewHolder(itemView)
     }
-
     override fun getItemCount(): Int {
         return eventList.size
     }
-
-
     override fun onBindViewHolder(holder: ArroundEventViewHolder, position: Int) {
         holder.bindData(eventList[position])
     }
-
 }
