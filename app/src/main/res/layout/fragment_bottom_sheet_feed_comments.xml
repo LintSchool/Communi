@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,7 +30,8 @@
         android:text="Comments"
         app:layout_constraintBottom_toTopOf="@id/rv_comments_list"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vw_separator" />
+        app:layout_constraintTop_toBottomOf="@id/vw_separator"
+        tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_comments_list"
@@ -57,7 +59,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_comments_list" />
+        app:layout_constraintTop_toBottomOf="@id/rv_comments_list"
+        tools:ignore="ContentDescription" />
 
 
     <LinearLayout
@@ -87,7 +90,8 @@
             android:hint="type something ..."
             android:importantForAutofill="no"
             android:inputType="text"
-            android:padding="8dp" />
+            android:padding="8dp"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:id="@+id/iv_upload_photo"
@@ -98,7 +102,8 @@
             android:layout_weight="1"
             android:padding="12dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_camera" />
+            android:src="@drawable/ic_camera"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/iv_submit_comment"
@@ -109,7 +114,8 @@
             android:layout_weight="1"
             android:background="@drawable/rounded_color_submit_btn_disable"
             android:padding="16dp"
-            android:src="@drawable/ic_check_mark" />
+            android:src="@drawable/ic_check_mark"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <View

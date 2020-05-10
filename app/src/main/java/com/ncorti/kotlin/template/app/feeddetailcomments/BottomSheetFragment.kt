@@ -26,6 +26,11 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         return view
     }
 
+    companion object {
+        const val heightPercent = 0.5f
+        const val expandHeightPercent = 0.85f
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (view!!.parent as View).background =
@@ -41,9 +46,9 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
             bottomSheet.viewTreeObserver?.addOnGlobalLayoutListener {
                 bottomSheet.viewTreeObserver.removeOnGlobalLayoutListener {}
-                bottomSheetBehavior.peekHeight = getPopupHeight(.5f)
+                bottomSheetBehavior.peekHeight = getPopupHeight(heightPercent)
                 val params = bottomSheet.layoutParams
-                params.height = getPopupHeight(.85f)
+                params.height = getPopupHeight(expandHeightPercent)
                 bottomSheet.layoutParams = params
                 coordinatorLayout.parent?.requestLayout()
             }
