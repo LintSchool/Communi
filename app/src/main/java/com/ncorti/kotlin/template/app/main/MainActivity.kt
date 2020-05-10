@@ -1,7 +1,7 @@
-package com.ncorti.kotlin.template.app.Main
+package com.ncorti.kotlin.template.app.main
 
-import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -13,18 +13,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ncorti.kotlin.template.app.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUp()
-
     }
 
     fun setUp() {
-
         var viewPagerAdapter = MainPagerAdapter(this)
         mainViewPager.adapter = viewPagerAdapter
         mainViewPager.setCurrentItem(0, false)
@@ -35,33 +32,32 @@ class MainActivity : AppCompatActivity() {
             mainViewPager,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 tab.icon = when (position) {
-                    0 -> {
+                    "0".toInt() -> {
                         getDrawable(R.drawable.ic_grid)
                     }
-                    1 -> {
+                    "1".toInt() -> {
                         getDrawable(R.drawable.ic_message_square)
                     }
-                    2 -> {
+                    "2".toInt() -> {
                         getDrawable(R.drawable.ic_activity)
                     }
-                    3 -> {
+                    "3".toInt() -> {
                         getDrawable(R.drawable.ic_profile)
                     }
                     else -> {
                         getDrawable(R.drawable.ic_grid)
                     }
                 }
-
-            }).attach()
+            }
+        ).attach()
 
         mainTabView.getTabAt(0)?.select()
         mainTabView.getTabAt(0)?.text = getString(R.string.feed)
         mainTabView.getTabAt(0)?.icon?.setTint(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary))
 
-
-        mainTabView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        mainTabView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
-
+                Log.v("TAP_RESELECTED", "tab reselected")
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -70,18 +66,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-
                 tab?.text = when (tab?.position) {
-                    0 -> {
+                    "0".toInt() -> {
                         getString(R.string.feed)
                     }
-                    1 -> {
+                    "1".toInt() -> {
                         getString(R.string.events)
                     }
-                    2 -> {
+                    "2".toInt() -> {
                         getString(R.string.chat)
                     }
-                    3 -> {
+                    "3".toInt() -> {
                         getString(R.string.profile)
                     }
                     else -> {
@@ -89,11 +84,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 tab?.icon?.setTint(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary))
-
             }
-
         })
-        //To allow equal width for each tab, while (TabLayout.MODE_SCROLLABLE)
+        // To allow equal width for each tab, while (TabLayout.MODE_SCROLLABLE)
         val slidingTabStrip = mainTabView.getChildAt(0) as ViewGroup
         for (i in 0 until mainTabView.getTabCount()) {
             val tab: View = slidingTabStrip.getChildAt(i)
@@ -102,12 +95,11 @@ class MainActivity : AppCompatActivity() {
             layoutParams.weight = 1f
             tab.setLayoutParams(layoutParams)
         }
-
     }
 }
 
-//private val notificationUtil: NotificationUtil by lazy { NotificationUtil(this) }
-//button_compute.setOnClickListener {
+// private val notificationUtil: NotificationUtil by lazy { NotificationUtil(this) }
+// button_compute.setOnClickListener {
 //    val input = edit_text_factorial.text.toString().toInt()
 //    val result = FactorialCalculator.computeFactorial(input).toString()
 //
@@ -119,4 +111,4 @@ class MainActivity : AppCompatActivity() {
 //        title = getString(R.string.notification_title),
 //        message = result
 //    )
-//}
+// }
