@@ -25,6 +25,7 @@
         </provider>
 
         <activity android:name=".Main.MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

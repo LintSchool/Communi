@@ -2,7 +2,7 @@ package com.ncorti.kotlin.template.app
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.ncorti.kotlin.template.app.Main.MainActivity
+import com.ncorti.kotlin.template.app.main.MainActivity
 import org.junit.Rule
 import org.junit.runner.RunWith
 
@@ -10,8 +10,7 @@ import org.junit.runner.RunWith
 class MainActivityTest {
 
     @get:Rule
-    var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(
-        MainActivity::class.java)
+    var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
 //    @Test
 //    fun typeANumber_resultIsDisplayed() {

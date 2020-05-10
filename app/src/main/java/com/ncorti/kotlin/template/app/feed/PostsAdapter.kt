@@ -1,4 +1,4 @@
-package com.ncorti.kotlin.template.app.Feed
+package com.ncorti.kotlin.template.app.feed
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ncorti.kotlin.template.app.R
 import kotlinx.android.synthetic.main.posts_rv_item.view.*
 
-class PostsAdapter() : ListAdapter<Post, PostsViewHolder>(DiffUtilCallback()) {
+class PostsAdapter : ListAdapter<Post, PostsViewHolder>(DiffUtilCallback()) {
 
     lateinit var onPostClick: ((view: View) -> Unit)
 
-    class DiffUtilCallback() : DiffUtil.ItemCallback<Post>() {
+    class DiffUtilCallback : DiffUtil.ItemCallback<Post>() {
         override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem.id == newItem.id
         }
@@ -32,7 +32,6 @@ class PostsAdapter() : ListAdapter<Post, PostsViewHolder>(DiffUtilCallback()) {
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         holder.bind(getItem(position))
-
     }
 }
 
@@ -44,12 +43,11 @@ class PostsViewHolder(itemView: View, var onClick: ((view: View) -> Unit)) :
         itemView.profile_image.setImageResource(itemData.userImagePath)
         itemView.userName.text = itemData.userName
         itemView.postTV.text = itemData.postText
-        if (itemData.imagePath != null)
+        if (itemData.imagePath != null) {
             itemView.constraintContainer.setImageResource(itemData.imagePath!!)
-
+        }
         itemView.postContainer.setOnClickListener {
             onClick.invoke(itemView)
         }
-
     }
 }

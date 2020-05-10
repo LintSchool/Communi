@@ -8,7 +8,7 @@
     android:background="@color/colorPrimaryDark"
     android:paddingStart="@dimen/base_grid_size"
     android:paddingTop="@dimen/doub_grid_size"
-    tools:context=".Main.MainActivity">
+    tools:context=".main.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/mainViewPager"
