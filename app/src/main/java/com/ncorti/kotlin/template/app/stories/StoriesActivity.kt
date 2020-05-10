@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.ncorti.kotlin.template.app.R
@@ -24,9 +25,11 @@ class StoriesActivity : AppCompatActivity() {
 
         reply_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
+                Log.v("afterTextChanged", "afterTextChanged")
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                Log.v("beforeTextChanged", "beforeTextChanged")
             }
 
             override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {

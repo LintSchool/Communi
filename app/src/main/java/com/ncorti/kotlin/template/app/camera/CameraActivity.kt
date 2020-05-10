@@ -118,6 +118,7 @@ class CameraActivity : AppCompatActivity() {
                         message: String,
                         exc: Throwable?
                     ) {
+                        Log.v("CAPTURE_IMAGE_ERROER","image error")
                     }
 
                     override fun onImageSaved(file: File) {

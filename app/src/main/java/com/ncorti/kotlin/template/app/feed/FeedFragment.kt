@@ -1,20 +1,23 @@
 package com.ncorti.kotlin.template.app.feed
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+
 import com.ncorti.kotlin.template.app.R
+import com.ncorti.kotlin.template.app.camera.CameraActivity
+import com.ncorti.kotlin.template.app.stories.StoriesActivity
 import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment() {
 
     lateinit var storiesAdapter: StoriesAdapter
-    lateinit var postsAdapter: PostsAdapter
+    lateinit var postsAdapter : PostsAdapter
     var postsList = listOf<Post>(
         Post(
             "1",
@@ -35,7 +38,7 @@ class FeedFragment : Fragment() {
             imagePath = null,
             userName = "Kate",
             userImagePath = R.drawable.download,
-            postText = "ay 7aga ay 7aga ay 7aga ay 7agaga ay 7aga ay 7aga"
+            postText =  "ay 7aga ay 7aga ay 7aga ay 7agaga ay 7aga ay 7aga"
         ),
         Post(
             "4",
@@ -63,7 +66,7 @@ class FeedFragment : Fragment() {
             imagePath = null,
             userName = "Kate",
             userImagePath = R.drawable.download,
-            postText = "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay "
+            postText = "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga 7aga"
         )
     )
     var storiesDataList = listOf<Image>(
@@ -76,9 +79,16 @@ class FeedFragment : Fragment() {
         Image("6", R.drawable.ic_profile, false)
     )
 
-    companion object { fun newInstance(): FeedFragment = FeedFragment() }
+    companion object {
+        fun newInstance(): FeedFragment = FeedFragment()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
@@ -89,21 +99,23 @@ class FeedFragment : Fragment() {
     }
 
     fun setUp() {
+
 //        shimmer_post.visibility = View.VISIBLE
 //        shimmer_post.startShimmer()
-
 //        shimmer_post.visibility = View.GONE
 //        shimmer_post.stopShimmer()
 
         feedTitle.text = getString(R.string.feed_title) + "ya 2y 7aga."
 
         feedSubTitle.setOnClickListener {
+
         }
 
         postsAdapter = PostsAdapter()
         postsAdapter.submitList(postsList)
         feedsRV.adapter = postsAdapter
-        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        var layoutManager  = StaggeredGridLayoutManager("2".toInt(), StaggeredGridLayoutManager.VERTICAL)
+
         feedsRV.layoutManager = layoutManager
         feedsRV.addItemDecoration(PostItemDecorator("8".toInt()))
 
@@ -115,26 +127,26 @@ class FeedFragment : Fragment() {
             ).show()
         }
 
+
+
+
         storiesAdapter = StoriesAdapter()
         storiesAdapter.submitList(storiesDataList)
         storiesRV.adapter = storiesAdapter
         storiesRV.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
+
         storiesAdapter.onItmClick = { itemView ->
-            Toast.makeText(
-                activity,
-                storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            startActivity(StoriesActivity.startIntent(requireContext()))
         }
 
         storiesAdapter.onAddMyStoryItmClick = { itemView ->
-            Toast.makeText(
-                activity,
-                storiesDataList[storiesRV.getChildAdapterPosition(itemView)].id.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            startActivity(CameraActivity.startIntent(requireContext()))
+
         }
+
+
     }
+
 }
