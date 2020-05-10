@@ -4,5 +4,5 @@ import android.net.Uri
 
 data class CapturedImage(
     var id: Int,
-    var imagePath: String
+    var imagePath: Uri
 )
