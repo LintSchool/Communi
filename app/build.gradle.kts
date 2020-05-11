@@ -50,10 +50,11 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_LEGACY)
     implementation(SupportLibs.PICASSO)
 
-    //CameraX
+    // CameraX
     implementation(SupportLibs.CAMERAX)
     implementation(SupportLibs.CAMERAX_EXTENSIONS)
     implementation(SupportLibs.CAMERAX_VIEW)
+    implementation(SupportLibs.GLIDE)
 
     implementation(SupportLibs.CIRCLE_IMAGE_VIEW)
     implementation(SupportLibs.FACEBOOK_SHIMMER)

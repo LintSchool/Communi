@@ -1,8 +1,9 @@
 package com.ncorti.kotlin.template.app.utils
 
+import android.net.Uri
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 
 fun View.showSnackbar(
@@ -16,4 +17,12 @@ fun View.showSnackbar(
     ) { actionListener() }
 
     return snackbar.show()
+}
+
+fun ImageView.loadImageUri(imageUri: Uri) {
+    Glide.with(this.context).load(imageUri).into(this)
+}
+
+fun ImageView.loadImageRes(imageRes: Int) {
+    Glide.with(this.context).load(imageRes).into(this)
 }
