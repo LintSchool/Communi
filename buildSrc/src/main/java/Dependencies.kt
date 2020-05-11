@@ -13,6 +13,9 @@ object Versions {
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
+    const val RECYCLERVIEW = "1.2.0-alpha03"
+    const val ANDROID_DESIGN = "1.0.0"
+    const val ROUNDED_IMAGE = "2.3.0"
 }
 
 object BuildPluginsVersion {
@@ -27,6 +30,9 @@ object SupportLibs {
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val ANDROIDX_RECYCLERVIEW = "androidx.recyclerview:recyclerview:${Versions.RECYCLERVIEW}"
+    const val ANDROIDX_DESIGN = "com.google.android.material:material:${Versions.ANDROID_DESIGN}"
+    const val ROUNDED_IMAGE = "com.makeramen:roundedimageview:${Versions.ROUNDED_IMAGE}"
 }
 
 object TestingLib {
