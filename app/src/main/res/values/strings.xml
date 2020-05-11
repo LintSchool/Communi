@@ -10,4 +10,6 @@
     <!-- Chat -->
     <string name="chats">Chats</string>
     <string name="you_got_n_unread_messages">You got %1$d unread messages</string>
+    <string name="app_name">Communi</string>
+
 </resources>
