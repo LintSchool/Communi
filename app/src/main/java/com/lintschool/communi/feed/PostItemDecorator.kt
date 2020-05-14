@@ -12,9 +12,10 @@ class PostItemDecorator(var offset: Int) : RecyclerView.ItemDecoration() {
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-//        var layoutManagerPositions = (parent.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(IntArray((parent.layoutManager as StaggeredGridLayoutManager).spanCount))
-
-        var layoutManagerPositions = (parent.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(IntArray((parent.layoutManager as StaggeredGridLayoutManager).spanCount))
+        var layoutManagerPositions = (parent.layoutManager as StaggeredGridLayoutManager)
+            .findLastCompletelyVisibleItemPositions(
+                IntArray((parent.layoutManager as StaggeredGridLayoutManager).spanCount)
+            )
 
         outRect.apply {
             if (layoutManagerPositions.get(1) % 2 == 0) {
