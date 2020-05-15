@@ -17,7 +17,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.ncorti.kotlin.template.app.provider"
+            android:authorities="com.lintschool.communi.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
