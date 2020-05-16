@@ -15,6 +15,7 @@ android {
         versionCode = AppCoordinates.APP_VERSION_CODE
         versionName = AppCoordinates.APP_VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
