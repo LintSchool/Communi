@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
 
 
+
     <color name="warm_pink">#ff557b</color>
     <color name="darkish_pink">#e44579</color>
     <color name="sick_green">#9acb34</color>
@@ -17,6 +18,7 @@
     <color name="tomato">#f32a2a</color>
     <color name="color_solid_primary">#66cbc9</color>
     <color name="color_greys_03_light_03_80">#cceaebf1</color>
+    <color name="color_greys_05_white_01_100_085">#d9ffffff</color>
     <color name="color_greys_04_extralight_02_90">#e6f6f7fc</color>
     <color name="color_greys_03_light_02_90">#e6eaebf1</color>
     <color name="color_greys_04_extralight_03_80">#ccf6f7fc</color>
