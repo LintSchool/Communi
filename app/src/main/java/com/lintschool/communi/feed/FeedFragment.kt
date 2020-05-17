@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.lintschool.communi.R
 import com.lintschool.communi.camera.CameraActivity
 import com.lintschool.communi.stories.StoriesActivity
+import kotlinx.android.synthetic.main.feedbottomsheet.*
 import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment() {
@@ -130,6 +132,16 @@ class FeedFragment : Fragment() {
 
         storiesAdapter.onAddMyStoryItmClick = { itemView ->
             startActivity(CameraActivity.startIntent(requireContext()))
+        }
+
+        feedSubTitle.setOnClickListener {
+            val bottomSheetDialog = context?.let { it1 -> BottomSheetDialog(it1, R.style.BottomSheetDialogTheme) }
+
+            val bottomSheetView = LayoutInflater.from(context).inflate(
+                R.layout.feedbottomsheet, bottomsheetcontainers
+            )
+            bottomSheetDialog!!.setContentView(bottomSheetView)
+            bottomSheetDialog.show()
         }
     }
 }

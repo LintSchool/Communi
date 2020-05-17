@@ -18,6 +18,8 @@
 
     <string name="stories_counter">%1$d/%2$d</string>
     <string name="app_name">Communi</string>
+    <string name="new_post">New Post</string>
+    <string name="post_field">Tell your freinds what\'s on your mind</string>
 
 </resources>
 
