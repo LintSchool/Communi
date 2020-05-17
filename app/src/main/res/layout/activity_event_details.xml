@@ -15,7 +15,7 @@
         <!---->
     </ImageView>
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/eventDetailToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="top"
@@ -39,6 +39,7 @@
                 android:id="@+id/backArrow"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:layout_margin="32dp"
                 android:src="@drawable/ic_left">
 
 
