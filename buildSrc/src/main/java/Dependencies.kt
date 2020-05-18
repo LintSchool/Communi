@@ -24,6 +24,7 @@ object Versions {
 
     const val CIRCLE_IMAGE = "3.1.0"
     const val SHIMMER = "0.4.0"
+    const val ANDROIDX_PREFERENCE = "1.1.1"
 }
 
 object BuildPluginsVersion {
@@ -49,6 +50,7 @@ object SupportLibs {
     const val CAMERAX_VIEW = "androidx.camera:camera-view:${Versions.CAMERAX_VIEW}"
     const val PICASSO = "com.squareup.picasso:picasso:${Versions.PICASSO_VERSION}"
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val SHARED_PREFERENCES = "androidx.preference:preference:${Versions.ANDROIDX_PREFERENCE}"
 }
 
 object TestingLib {

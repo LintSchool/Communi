@@ -55,6 +55,8 @@ dependencies {
     implementation(SupportLibs.CIRCLE_IMAGE_VIEW)
     implementation(SupportLibs.FACEBOOK_SHIMMER)
 
+    implementation(SupportLibs.SHARED_PREFERENCES)
+
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

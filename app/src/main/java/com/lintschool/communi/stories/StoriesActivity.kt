@@ -16,8 +16,10 @@ import kotlinx.android.synthetic.main.activity_stories.*
 class StoriesActivity : AppCompatActivity() {
 
     val storiesAdapter = StoriesAdapter()
-    val stories = UserStories.getUserStoriesList()
+//    val stories = UserStories.getUserStoriesList()
     lateinit var timer: CountDownTimer
+    val repository = StoriesInjector.getStoriesRepository(this)
+    lateinit var stories: List<UserStories>
 
     var userIndex = 0
     var storyIndex = 0
@@ -30,6 +32,13 @@ class StoriesActivity : AppCompatActivity() {
     }
 
     private fun setup() {
+        val startingPosition: Int
+
+        intent.hasExtra(POSITION_KEY).let {
+            startingPosition = intent.getIntExtra(POSITION_KEY, 0)
+            stories = repository.getStoriesFromPosition(startingPosition)
+        }
+
         timer = object : CountDownTimer(TIMER_DURATION, TIMER_INTERVAL) {
 
             override fun onFinish() {
@@ -90,12 +99,18 @@ class StoriesActivity : AppCompatActivity() {
 
             override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (charSequence.toString().isNotEmpty()) {
-                    send_iv.alpha = ACTIVE_BTN_ALPHA
+                    btn_send.alpha = ACTIVE_BTN_ALPHA
+                    btn_send.isEnabled = true
                 } else {
-                    send_iv.alpha = INACTIVE_BTN_ALPHA
+                    btn_send.alpha = INACTIVE_BTN_ALPHA
+                    btn_send.isEnabled = false
                 }
             }
         })
+
+        btn_send.setOnClickListener {
+            repository.sendReply(stories[userIndex].userId, reply_et.text.toString())
+        }
     }
 
     private fun loadCurrentStory(userIndex: Int, storyIndex: Int) {
@@ -116,8 +131,12 @@ class StoriesActivity : AppCompatActivity() {
         const val TIMER_DURATION = 10000L
         const val TIMER_INTERVAL = 1000L
 
-        fun startIntent(context: Context): Intent {
-            return Intent(context, StoriesActivity::class.java)
+        private const val POSITION_KEY = "position"
+
+        fun startIntent(context: Context, position: Int): Intent {
+            val intent = Intent(context, StoriesActivity::class.java)
+            intent.putExtra(POSITION_KEY, position)
+            return intent
         }
     }
 }
