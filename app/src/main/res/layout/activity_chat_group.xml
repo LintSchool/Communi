@@ -24,7 +24,6 @@
         android:layout_height="64dp"
         android:background="@drawable/shape_toolbar_chat_details"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/color_greys_01_dark_01_100"
@@ -32,14 +31,18 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_group_participants_recycler"
-        android:layout_width="128dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:maxWidth="96dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/chat_group_toolbar"
         app:layout_constraintEnd_toEndOf="@id/chat_group_toolbar"
-        app:layout_constraintTop_toTopOf="@id/chat_group_toolbar" />
+        app:layout_constraintTop_toTopOf="@id/chat_group_toolbar"
+        app:reverseLayout="true"
+        app:stackFromEnd="true"
+        tools:listitem="@layout/item_chat_user_image" />
 
     <include
         android:id="@+id/chat_group_sending_layout"

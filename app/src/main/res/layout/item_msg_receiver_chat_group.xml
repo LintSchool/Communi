@@ -16,7 +16,7 @@
         android:layout_height="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_person_black_24dp" />
+        tools:src="@drawable/ic_user_placeholder" />
 
     <TextView
         android:id="@+id/item_msg_receiver_name"
