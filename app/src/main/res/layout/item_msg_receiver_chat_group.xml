@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/item_message_margin_top"
+    android:layout_marginEnd="@dimen/item_message_margin_end"
+    android:background="@drawable/shape_message_receiver"
+    android:minWidth="256dp"
+    android:padding="12dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/item_msg_receiver_img"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_person_black_24dp" />
+
+    <TextView
+        android:id="@+id/item_msg_receiver_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/grey_light"
+        app:layout_constraintBottom_toBottomOf="@id/item_msg_receiver_img"
+        app:layout_constraintStart_toEndOf="@id/item_msg_receiver_img"
+        app:layout_constraintTop_toTopOf="@id/item_msg_receiver_img"
+        tools:text="Mohamed" />
+
+    <TextView
+        android:id="@+id/item_msg_receiver_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/grey_light"
+        app:layout_constraintBottom_toBottomOf="@id/item_msg_receiver_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_msg_receiver_name"
+        tools:text="10:45" />
+
+    <TextView
+        android:id="@+id/item_msg_receiver_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/color_greys_01_dark_01_100"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/item_msg_receiver_img"
+        app:layout_constraintTop_toBottomOf="@id/item_msg_receiver_img"
+        tools:text="Haha oh my gosh. I knew what happened as Mike bought lots of drinks last time. Which time was it? " />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
