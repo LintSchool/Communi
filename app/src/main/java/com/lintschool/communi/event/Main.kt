@@ -1,8 +1,9 @@
-package com.lintschool.communi
+package com.lintschool.communi.event
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.lintschool.communi.fragments.EventFragment
+import com.lintschool.communi.R
+import com.lintschool.communi.event.fragments.EventFragment
 import kotlinx.android.synthetic.main.activity_main_.*
 
 class Main : AppCompatActivity() {

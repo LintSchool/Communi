@@ -1,8 +1,8 @@
-package com.lintschool.communi
+package com.lintschool.communi.event
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.lintschool.communi.R
 
 class MainActivity : AppCompatActivity() {
 

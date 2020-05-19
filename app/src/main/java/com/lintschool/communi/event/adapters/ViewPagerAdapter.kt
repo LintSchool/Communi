@@ -1,11 +1,11 @@
-package com.lintschool.communi.adapters
+package com.lintschool.communi.event.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.lintschool.communi.fragments.DetailsFragment
-import com.lintschool.communi.fragments.FeedFragment
-import com.lintschool.communi.fragments.GuestListFragment
+import com.lintschool.communi.event.fragments.DetailsFragment
+import com.lintschool.communi.event.fragments.FeedFragment
+import com.lintschool.communi.event.fragments.GuestListFragment
 
 class ViewPagerAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {

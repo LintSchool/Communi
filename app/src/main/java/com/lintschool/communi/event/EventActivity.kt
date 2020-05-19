@@ -1,10 +1,11 @@
-package com.lintschool.communi
+package com.lintschool.communi.event
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.lintschool.communi.adapters.ViewPagerAdapter
+import com.lintschool.communi.R
+import com.lintschool.communi.event.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_event_details.*
 import kotlinx.android.synthetic.main.event_details_bottom_sheet.*
 class EventActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.lintschool.communi.adapters
+package com.lintschool.communi.event.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.lintschool.communi.EventActivity
+import com.lintschool.communi.event.EventActivity
 import com.lintschool.communi.R
-import com.lintschool.communi.data.Event
+import com.lintschool.communi.event.data.Event
 import kotlinx.android.synthetic.main.item_suggested_event.view.*
 
 class SuggestedEventAdapter(

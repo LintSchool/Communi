@@ -1,4 +1,4 @@
-package com.lintschool.communi.fragments
+package com.lintschool.communi.event.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lintschool.communi.EventsBottmSheet
+import com.lintschool.communi.event.EventsBottmSheet
 import com.lintschool.communi.R
-import com.lintschool.communi.adapters.AroundEventAdapter
-import com.lintschool.communi.adapters.SuggestedEventAdapter
-import com.lintschool.communi.data.Event
+import com.lintschool.communi.event.adapters.AroundEventAdapter
+import com.lintschool.communi.event.adapters.SuggestedEventAdapter
+import com.lintschool.communi.event.data.Event
 import kotlinx.android.synthetic.main.bottom_sheet.*
 
 class EventFragment : Fragment() {
@@ -39,7 +39,9 @@ class EventFragment : Fragment() {
         aroundEventList.add(0, Event("YF Aftershow Party", "Today", ""))
         aroundEventList.add(1, Event("Football Match", "Tomorrow", ""))
         val aroundEventAdapter =
-            AroundEventAdapter(aroundEventList)
+            AroundEventAdapter(
+                aroundEventList
+            )
         rvEventsAround.adapter = aroundEventAdapter
     }
 }
