@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lintschool.communi.R
+import com.lintschool.communi.stories.UserStories
 import kotlinx.android.synthetic.main.add_story_rv_item.view.*
 import kotlinx.android.synthetic.main.stories_rv_item.view.storyContainer
 import kotlinx.android.synthetic.main.stories_rv_item.view.storyImage
 
-class StoriesAdapter : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCallback()) {
+class StoriesAdapter : ListAdapter<UserStories, RecyclerView.ViewHolder>(DiffUtilsCallback()) {
 
     lateinit var onItmClick: ((position: Int) -> Unit)
     lateinit var onAddMyStoryItmClick: ((view: View) -> Unit)
@@ -25,16 +26,16 @@ class StoriesAdapter : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCall
         return if (getItem(position).addStory) ADD_STORY_TYPE else STORY
     }
 
-    class DiffUtilsCallback : DiffUtil.ItemCallback<Image>() {
-        override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
+    class DiffUtilsCallback : DiffUtil.ItemCallback<UserStories>() {
+        override fun areItemsTheSame(oldItem: UserStories, newItem: UserStories): Boolean {
             return if (oldItem.addStory && newItem.addStory) {
-                oldItem.id == newItem.id
+                oldItem.userId == newItem.userId
             } else if (!oldItem.addStory && !newItem.addStory) {
-                oldItem.id == newItem.id
+                oldItem.userId == newItem.userId
             } else false
         }
 
-        override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
+        override fun areContentsTheSame(oldItem: UserStories, newItem: UserStories): Boolean {
             return if (oldItem.addStory && newItem.addStory) {
                 oldItem == newItem
             } else if (!oldItem.addStory && !newItem.addStory) {
@@ -73,8 +74,8 @@ class StoriesAdapter : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCall
 class StoryViewHolder(itemView: View, var onItemClicked: ((position: Int) -> Unit)? = null) :
     RecyclerView.ViewHolder(itemView) {
 
-    fun bind(itemData: Image) {
-        itemView.storyImage.setImageResource(itemData.imagePath!!)
+    fun bind(itemData: UserStories) {
+        itemView.storyImage.setImageResource(itemData.stories[0].storyRes)
 
         itemView.storyContainer.setOnClickListener { onItemClicked?.invoke(adapterPosition) }
     }
@@ -85,10 +86,10 @@ class AddStoryViewHolder(
     var onAddStoryItemClicked: ((view: View) -> Unit)? = null
 ) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(itemData: Image) {
+    fun bind(itemData: UserStories) {
         itemView.addStoryBtn.visibility = View.VISIBLE
-        if (itemData.imagePath != null) {
-            itemView.storyImage.setImageResource(itemData.imagePath!!)
+        if (itemData.stories[0].storyRes != null) {
+            itemView.storyImage.setImageResource(itemData.stories[0].storyRes)
         }
         itemView.storyContainer.setOnClickListener { onAddStoryItemClicked?.invoke(itemView) }
     }

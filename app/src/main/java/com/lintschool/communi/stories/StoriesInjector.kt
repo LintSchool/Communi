@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 
+
 object StoriesInjector {
 
     fun getSharedPreferences(context: Context): SharedPreferences {

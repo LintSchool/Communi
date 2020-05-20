@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.lintschool.communi.R
 import com.lintschool.communi.camera.CameraActivity
 import com.lintschool.communi.stories.StoriesActivity
+import com.lintschool.communi.stories.UserStories
 import kotlinx.android.synthetic.main.feedbottomsheet.*
 import kotlinx.android.synthetic.main.fragment_feed.*
 
@@ -19,66 +20,9 @@ class FeedFragment : Fragment() {
 
     lateinit var storiesAdapter: StoriesAdapter
     lateinit var postsAdapter: PostsAdapter
-    var postsList = listOf<Post>(
-        Post(
-            "1",
-            null,
-            "Kate",
-            R.drawable.download,
-            "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga"
-        ),
-        Post(
-            "2",
-            R.drawable.download1,
-            "Kate",
-            R.drawable.download,
-            "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga"
-        ),
-        Post(
-            id = "3",
-            imagePath = null,
-            userName = "Kate",
-            userImagePath = R.drawable.download,
-            postText = "ay 7aga ay 7aga ay 7aga ay 7agaga ay 7aga ay 7aga"
-        ),
-        Post(
-            "4",
-            null,
-            "Kate",
-            R.drawable.download,
-            " ay 7aga ay 7aga ay 7aga "
-        ),
-        Post(
-            "5",
-            R.drawable.download1,
-            "Kate",
-            R.drawable.download,
-            "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga"
-        ),
-        Post(
-            "6",
-            R.drawable.download1,
-            "Kate",
-            R.drawable.download,
-            "ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga ay 7aga"
-        ),
-        Post(
-            id = "7",
-            imagePath = null,
-            userName = "Kate",
-            userImagePath = R.drawable.download,
-            postText = "aga ay 7aga ay 7aga ay 7aga ay 7aga"
-        )
-    )
-    var storiesDataList = listOf<Image>(
-        Image("0", null, true),
-        Image("1", R.drawable.ic_profile, false),
-        Image("2", R.drawable.ic_profile, false),
-        Image("3", R.drawable.ic_profile, false),
-        Image("4", R.drawable.ic_profile, false),
-        Image("5", R.drawable.ic_profile, false),
-        Image("6", R.drawable.ic_profile, false)
-    )
+    var feedViewModel = FeedsInjector().getFeedsViewModel(this.requireContext())
+    lateinit var postsList : List<Post>
+    lateinit var storiesList : List<UserStories>
 
     companion object {
         fun newInstance(): FeedFragment = FeedFragment()
@@ -100,6 +44,8 @@ class FeedFragment : Fragment() {
     }
 
     fun setUp() {
+        postsList = feedViewModel.getPosts()
+        storiesList = feedViewModel.getStories()
         feedTitle.text = getString(R.string.feed_title) + "ya 2y 7aga."
 
         feedSubTitle.setOnClickListener {
@@ -122,9 +68,10 @@ class FeedFragment : Fragment() {
         }
 
         storiesAdapter = StoriesAdapter()
-        storiesAdapter.submitList(storiesDataList)
+        storiesAdapter.submitList(storiesList)
         storiesRV.adapter = storiesAdapter
-        storiesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        storiesRV.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
         storiesAdapter.onItmClick = { position ->
             startActivity(StoriesActivity.startIntent(requireContext(), position))
@@ -135,7 +82,8 @@ class FeedFragment : Fragment() {
         }
 
         feedSubTitle.setOnClickListener {
-            val bottomSheetDialog = context?.let { it1 -> BottomSheetDialog(it1, R.style.BottomSheetDialogTheme) }
+            val bottomSheetDialog =
+                context?.let { it1 -> BottomSheetDialog(it1, R.style.BottomSheetDialogTheme) }
 
             val bottomSheetView = LayoutInflater.from(context).inflate(
                 R.layout.feedbottomsheet, bottomsheetcontainers

@@ -8,7 +8,8 @@ data class UserStories(
     val userImageRes: Int,
     val stories: List<Story>,
     var playing: Boolean = false,
-    var playingIndex: Int = -1
+    var playingIndex: Int = -1,
+    var addStory : Boolean
 ) {
     companion object {
 
@@ -20,11 +21,16 @@ data class UserStories(
                     Story(R.drawable.flowers),
                     Story(R.drawable.download1)
                 ),
-                true
+                true,
+                -1,
+                false
             ),
             UserStories(
                 "Eve Johnson", 2, R.drawable.desktop,
-                listOf(Story(R.drawable.desktop))
+                listOf(Story(R.drawable.desktop)),
+                true,
+                -1,
+                false
             ),
             UserStories(
                 "Eve Johnson", 3, R.drawable.flowers,
@@ -32,7 +38,10 @@ data class UserStories(
                     Story(R.drawable.download1),
                     Story(R.drawable.download1),
                     Story(R.drawable.download1)
-                )
+                ),
+                true,
+                -1,
+                false
             )
         )
     }
