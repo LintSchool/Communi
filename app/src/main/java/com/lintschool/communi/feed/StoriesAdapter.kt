@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.stories_rv_item.view.storyImage
 
 class StoriesAdapter : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCallback()) {
 
-    lateinit var onItmClick: ((view: View) -> Unit)
+    lateinit var onItmClick: ((position: Int) -> Unit)
     lateinit var onAddMyStoryItmClick: ((view: View) -> Unit)
 
     companion object {
@@ -70,13 +70,13 @@ class StoriesAdapter : ListAdapter<Image, RecyclerView.ViewHolder>(DiffUtilsCall
     }
 }
 
-class StoryViewHolder(itemView: View, var onItemClicked: ((view: View) -> Unit)? = null) :
+class StoryViewHolder(itemView: View, var onItemClicked: ((position: Int) -> Unit)? = null) :
     RecyclerView.ViewHolder(itemView) {
 
     fun bind(itemData: Image) {
         itemView.storyImage.setImageResource(itemData.imagePath!!)
 
-        itemView.storyContainer.setOnClickListener { onItemClicked?.invoke(itemView) }
+        itemView.storyContainer.setOnClickListener { onItemClicked?.invoke(adapterPosition) }
     }
 }
 

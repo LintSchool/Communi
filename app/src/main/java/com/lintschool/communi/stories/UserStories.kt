@@ -4,6 +4,7 @@ import com.lintschool.communi.R
 
 data class UserStories(
     val userName: String,
+    val userId: Int,
     val userImageRes: Int,
     val stories: List<Story>,
     var playing: Boolean = false,
@@ -11,31 +12,29 @@ data class UserStories(
 ) {
     companion object {
 
-        fun getUserStoriesList(): List<UserStories> {
-            return listOf(
-                UserStories(
-                    "Eve Johnson", R.drawable.download,
-                    listOf(
-                        Story(R.drawable.download),
-                        Story(R.drawable.flowers),
-                        Story(R.drawable.download1)
-                    ),
-                    true
+        val USER_STORIES = listOf(
+            UserStories(
+                "Eve Johnson", 1, R.drawable.download,
+                listOf(
+                    Story(R.drawable.download),
+                    Story(R.drawable.flowers),
+                    Story(R.drawable.download1)
                 ),
-                UserStories(
-                    "Eve Johnson", R.drawable.desktop,
-                    listOf(Story(R.drawable.desktop))
-                ),
-                UserStories(
-                    "Eve Johnson", R.drawable.flowers,
-                    listOf(
-                        Story(R.drawable.download1),
-                        Story(R.drawable.download1),
-                        Story(R.drawable.download1)
-                    )
+                true
+            ),
+            UserStories(
+                "Eve Johnson", 2, R.drawable.desktop,
+                listOf(Story(R.drawable.desktop))
+            ),
+            UserStories(
+                "Eve Johnson", 3, R.drawable.flowers,
+                listOf(
+                    Story(R.drawable.download1),
+                    Story(R.drawable.download1),
+                    Story(R.drawable.download1)
                 )
             )
-        }
+        )
     }
 }
 

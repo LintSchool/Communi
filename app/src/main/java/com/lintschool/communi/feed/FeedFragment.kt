@@ -126,8 +126,8 @@ class FeedFragment : Fragment() {
         storiesRV.adapter = storiesAdapter
         storiesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-        storiesAdapter.onItmClick = { itemView ->
-            startActivity(StoriesActivity.startIntent(requireContext()))
+        storiesAdapter.onItmClick = { position ->
+            startActivity(StoriesActivity.startIntent(requireContext(), position))
         }
 
         storiesAdapter.onAddMyStoryItmClick = { itemView ->
