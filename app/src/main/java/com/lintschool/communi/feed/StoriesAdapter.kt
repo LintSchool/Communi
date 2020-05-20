@@ -88,9 +88,9 @@ class AddStoryViewHolder(
 
     fun bind(itemData: UserStories) {
         itemView.addStoryBtn.visibility = View.VISIBLE
-        if (itemData.stories[0].storyRes != null) {
-            itemView.storyImage.setImageResource(itemData.stories[0].storyRes)
-        }
+//        if (itemData.stories[0].storyRes != null) {
+//            itemView.storyImage.setImageResource(itemData.stories[0].storyRes)
+//        }
         itemView.storyContainer.setOnClickListener { onAddStoryItemClicked?.invoke(itemView) }
     }
 }

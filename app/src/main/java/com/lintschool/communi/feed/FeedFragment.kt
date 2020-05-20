@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.lintschool.MyApplication
+import com.lintschool.communi.main.MainActivity
 import com.lintschool.communi.R
 import com.lintschool.communi.camera.CameraActivity
 import com.lintschool.communi.stories.StoriesActivity
@@ -20,7 +22,7 @@ class FeedFragment : Fragment() {
 
     lateinit var storiesAdapter: StoriesAdapter
     lateinit var postsAdapter: PostsAdapter
-    var feedViewModel = FeedsInjector().getFeedsViewModel(this.requireContext())
+    var feedViewModel = FeedsInjector().getFeedsViewModel(MyApplication.applicationContext())
     lateinit var postsList : List<Post>
     lateinit var storiesList : List<UserStories>
 

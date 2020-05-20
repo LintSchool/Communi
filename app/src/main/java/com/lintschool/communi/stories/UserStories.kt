@@ -23,6 +23,17 @@ data class UserStories(
                 ),
                 true,
                 -1,
+                true
+            ),
+            UserStories(
+                "Eve Johnson", 1, R.drawable.download,
+                listOf(
+                    Story(R.drawable.download),
+                    Story(R.drawable.flowers),
+                    Story(R.drawable.download1)
+                ),
+                true,
+                -1,
                 false
             ),
             UserStories(
