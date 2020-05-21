@@ -17,18 +17,20 @@ class AroundEventAdapter(
             itemView.eventDate.text = event.date
         }
     }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ):
-            ArroundEventViewHolder {
-            val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_arround_event, parent, false)
-            return ArroundEventViewHolder(itemView)
-        }
+    ): ArroundEventViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_arround_event, parent, false)
+        return ArroundEventViewHolder(itemView)
+    }
+
     override fun getItemCount(): Int {
         return eventList.size
     }
+
     override fun onBindViewHolder(holder: ArroundEventViewHolder, position: Int) {
         holder.bindData(eventList[position])
     }

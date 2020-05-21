@@ -20,7 +20,7 @@ class ViewPagerAdapter internal constructor(fm: FragmentManager) : FragmentPager
     }
 
     override fun getCount(): Int {
-        return count
+        return Companion.count
     }
 
     override fun getPageTitle(position: Int): CharSequence? {

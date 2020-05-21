@@ -12,8 +12,8 @@ class MainActivityTest {
 
     @get:Rule
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(
-        MainActivity::class.java)
-
+        MainActivity::class.java
+    )
     /**
      * Example test function
      */

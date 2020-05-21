@@ -29,4 +29,11 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <!-- styles.xml -->
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
 </resources>

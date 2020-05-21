@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lintschool.communi.event.EventsBottmSheet
 import com.lintschool.communi.R
+import com.lintschool.communi.event.EventsBottmSheet
 import com.lintschool.communi.event.adapters.AroundEventAdapter
 import com.lintschool.communi.event.adapters.SuggestedEventAdapter
 import com.lintschool.communi.event.data.Event
-import kotlinx.android.synthetic.main.bottom_sheet.*
+import kotlinx.android.synthetic.main.fragment_event.*
 
 class EventFragment : Fragment() {
     private lateinit var layoutManager: LinearLayoutManager
@@ -20,8 +20,19 @@ class EventFragment : Fragment() {
     var aroundEventList: MutableList<Event> = mutableListOf()
     var eventsBottmSheet: EventsBottmSheet =
         EventsBottmSheet()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_event, container, false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater
+            .inflate(
+                R.layout.fragment_event,
+                container,
+                false
+            )
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
