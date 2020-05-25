@@ -13,7 +13,7 @@
         tools:ignore="AllowBackup">
 
         <activity android:name=".NewChatActivity"/>
-        <activity android:name=".SingleChatDetailsActivity" />
+        <activity android:name=".ChatSingleActivity" />
         <activity android:name=".ChatGroupActivity"/>
 
         <activity android:name=".MainActivity">
