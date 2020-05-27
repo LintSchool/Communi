@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ChatGroupActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/chat_group_sending_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_msg_receiver_chat_group" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chat_group_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="@drawable/shape_toolbar_chat_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/color_greys_01_dark_01_100"
+        tools:title="Username" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_group_participants_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:maxWidth="96dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@id/chat_group_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/chat_group_toolbar"
+        app:layout_constraintTop_toTopOf="@id/chat_group_toolbar"
+        app:reverseLayout="true"
+        app:stackFromEnd="true"
+        tools:listitem="@layout/item_chat_user_image" />
+
+    <include
+        android:id="@+id/chat_group_sending_layout"
+        layout="@layout/layout_send_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,18 +11,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_arrow"
-            android:backgroundTint="@color/color_greys_01_dark_01_100"
-            />
+            android:backgroundTint="@color/color_greys_01_dark_01_100" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_search"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8.3dp"
-            android:backgroundTint="@color/color_greys_01_dark_01_100"
-            />
-
+            android:background="@drawable/ic_search"
+            android:backgroundTint="@color/color_greys_01_dark_01_100" />
     </RelativeLayout>
-
-</Toolbar>
+</androidx.appcompat.widget.Toolbar>

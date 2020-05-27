@@ -1,51 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="83.3dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
     app:cardBackgroundColor="@color/color_greys_04_extralight_01_100"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="5dp"
-    app:cardCornerRadius="15dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:paddingTop="28dp"
+        android:paddingBottom="28dp">
 
         <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img_user"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="15dp"
-            android:id="@+id/img_user"
-            android:src="@color/color_solid_primary"
             android:scaleType="centerCrop"
+            android:src="@color/color_solid_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="5dip"
-            app:riv_mutate_background="true"
-            />
+            app:riv_mutate_background="true" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:text="Anna Johnson"
+            android:layout_marginStart="24dp"
             android:textColor="@color/color_greys_01_dark_01_100"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_user"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Anna Johnson" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </com.google.android.material.card.MaterialCardView>

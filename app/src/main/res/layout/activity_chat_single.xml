@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SingleChatDetailsActivity"
+    android:background="@color/color_greys_05_white_01_100_085"
     android:orientation="vertical"
-    >
-
+    tools:context=".ChatSingleActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/chat_single_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_toolbar_chat_details"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,45 +26,37 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_arrow" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
                 android:layout_toEndOf="@+id/img_back"
-                android:text="Paul Williams"
-                android:textColor="@color/color_greys_01_dark_01_100" />
+                android:textColor="@color/color_greys_01_dark_01_100"
+                android:textSize="16sp"
+                tools:text="Paul Williams" />
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/circle_primary_color" />
-
+                tools:src="@drawable/ic_user_placeholder" />
         </RelativeLayout>
-
     </androidx.appcompat.widget.Toolbar>
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:listitem="@layout/item_message_sender_single_chat"
-        />
-
+        app:layout_constraintBottom_toTopOf="@id/chat_single_sending_layout"
+        app:layout_constraintTop_toBottomOf="@id/chat_single_toolbar"
+        tools:listitem="@layout/item_message_sender_single_chat" />
 
     <include
+        android:id="@+id/chat_single_sending_layout"
         layout="@layout/layout_send_message"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        />
-
-
-
-
-</LinearLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
