@@ -15,7 +15,6 @@ android {
         versionCode = AppCoordinates.APP_VERSION_CODE
         versionName = AppCoordinates.APP_VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -24,10 +23,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -45,8 +41,6 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_RECYCLERVIEW)
     implementation(SupportLibs.ANDROIDX_DESIGN)
     implementation(SupportLibs.ROUNDED_IMAGE)
-
-
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

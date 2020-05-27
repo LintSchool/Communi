@@ -6,41 +6,12 @@
 
 
 
-    <color name="warm_pink">#ff557b</color>
-    <color name="darkish_pink">#e44579</color>
-    <color name="sick_green">#9acb34</color>
+
     <color name="color_greys_01_dark_01_100">#4c4b5e</color>
-    <color name="color_greys_02_medium_01_100">#d1d4d7</color>
-    <color name="color_greys_03_light_01_100">#eaebf1</color>
     <color name="color_greys_04_extralight_01_100">#f6f7fc</color>
     <color name="color_greys_05_white_01_100">#ffffff</color>
-    <color name="aqua_blue">#00e8d6</color>
-    <color name="tomato">#f32a2a</color>
-    <color name="color_solid_primary">#66cbc9</color>
-    <color name="color_greys_03_light_03_80">#cceaebf1</color>
-    <color name="color_greys_05_white_01_100_085">#d9ffffff</color>
-    <color name="color_greys_04_extralight_02_90">#e6f6f7fc</color>
-    <color name="color_greys_03_light_02_90">#e6eaebf1</color>
-    <color name="color_greys_04_extralight_03_80">#ccf6f7fc</color>
-    <color name="color_greys_04_extralight_05_20">#33f6f7fc</color>
-    <color name="color_greys_05_white_02_90">#e6ffffff</color>
-    <color name="color_greys_05_white_04_40">#66ffffff</color>
-    <color name="color_greys_01_dark_04_40">#664c4b5e</color>
-    <color name="color_greys_01_dark_02_90">#e64c4b5e</color>
-    <color name="color_greys_05_white_05_20">#33ffffff</color>
-    <color name="color_greys_03_light_04_40">#66eaebf1</color>
-    <color name="color_solid_success">#38c2b7</color>
-    <color name="color_greys_02_medium_03_80">#ccd1d4d7</color>
-    <color name="color_solid_secondary">#051c48</color>
-    <color name="color_greys_05_white_03_80">#ccffffff</color>
     <color name="color_greys_02_medium_04_40">#66d1d4d7</color>
-    <color name="color_solid_error">#e14161</color>
-    <color name="color_greys_01_dark_06_5">#0c4c4b5e</color>
-    <color name="color_greys_02_medium_02_90">#e6d1d4d7</color>
-    <color name="color_greys_04_extralight_04_40">#66f6f7fc</color>
-    <color name="color_greys_01_dark_03_80">#cc4c4b5e</color>
-    <color name="color_greys_03_light_05_20">#33eaebf1</color>
-    <color name="color_greys_01_dark_05_20">#334c4b5e</color>
-    <color name="color_greys_02_medium_05_20">#33d1d4d7</color>
-    <color name="grey_light">#c7c7d4</color>
+    <color name="color_greys_05_white_01_100_085">#d9ffffff</color>
+    <color name="color_solid_primary">#66cbc9</color>
+
 </resources>

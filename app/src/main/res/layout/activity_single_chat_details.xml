@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SingleChatDetailsActivity"
-    android:background="@color/color_greys_05_white_01_100_085"
     android:orientation="vertical"
     >
 
@@ -55,7 +54,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         tools:listitem="@layout/item_message_sender_single_chat"
         />

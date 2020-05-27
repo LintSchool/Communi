@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="@color/color_greys_05_white_01_100"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -37,7 +36,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="null"
+                android:background="@android:color/transparent"
                 android:hint="@string/type_something"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"

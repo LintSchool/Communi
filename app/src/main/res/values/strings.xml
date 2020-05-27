@@ -9,7 +9,7 @@
 
     <!-- Chat -->
     <string name="chats">Chats</string>
-    <string name="you_got_n_unread_messages">You got %1$d unread messages</string>
+    <string name="you_got_n_unread_messages">You got 6 unread messages</string>
     <string name="you">You</string>
     <string name="type_something">type something ...</string>
     <string name="new_chat">New chat</string>
