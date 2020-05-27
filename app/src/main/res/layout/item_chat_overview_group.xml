@@ -7,6 +7,7 @@
     android:layout_marginStart="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
+    tools:ignore="UnusedResources"
     app:cardBackgroundColor="@color/color_greys_04_extralight_01_100"
     app:cardCornerRadius="12dp">
 

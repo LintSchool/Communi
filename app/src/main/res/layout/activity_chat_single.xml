@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_greys_05_white_01_100_085"
     android:orientation="vertical"
-    tools:context=".ChatSingleActivity">
+    tools:context=".chat.view.activity.ChatSingleActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/chat_single_toolbar"

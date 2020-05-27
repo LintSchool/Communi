@@ -12,9 +12,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 
-        <activity android:name=".NewChatActivity"/>
-        <activity android:name=".ChatSingleActivity" />
-        <activity android:name=".ChatGroupActivity"/>
+        <activity android:name=".chat.view.activity.NewChatActivity"/>
+        <activity android:name=".chat.view.activity.ChatSingleActivity" />
+        <activity android:name=".chat.view.activity.ChatGroupActivity"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>

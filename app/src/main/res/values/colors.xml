@@ -3,15 +3,14 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-
-
-
+    r
 
     <color name="color_greys_01_dark_01_100">#4c4b5e</color>
     <color name="color_greys_04_extralight_01_100">#f6f7fc</color>
     <color name="color_greys_05_white_01_100">#ffffff</color>
-    <color name="color_greys_02_medium_04_40">#66d1d4d7</color>
-    <color name="color_greys_05_white_01_100_085">#d9ffffff</color>
     <color name="color_solid_primary">#66cbc9</color>
+    <color name="color_greys_05_white_01_100_085">#d9ffffff</color>
 
+    <color name="color_greys_02_medium_04_40">#66d1d4d7</color>
+=    <color name="grey_light">#c7c7d4</color>
 </resources>

@@ -1,6 +1,7 @@
-package com.lintschool.communi
+package com.lintschool.communi.chat.view.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.lintschool.communi.R
 
 class ChatGroupActivity : AppCompatActivity() {
 
