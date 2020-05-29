@@ -13,6 +13,7 @@ object Versions {
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
+    const val RETROFIT = "2.6.0"
 }
 
 object BuildPluginsVersion {
@@ -38,4 +39,9 @@ object AndroidTestingLib {
     const val ANDROIDX_TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
     const val ANDROIDX_TEST_EXT_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+}
+
+object RETROFIT{
+    const val RETROFIT ="com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
+    const val RETROFIT_JSON_CONVERTER ="com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
 }

@@ -47,4 +47,9 @@ dependencies {
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
+
+    implementation(RETROFIT.RETROFIT)
+    implementation(RETROFIT.RETROFIT_JSON_CONVERTER)
+
+
 }
