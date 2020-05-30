@@ -14,6 +14,7 @@ object Versions {
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
+    const val MATERIAL = "1.0.0"
 }
 
 object BuildPluginsVersion {
@@ -32,6 +33,7 @@ object SupportLibs {
     const val ANDROIDX_COORDINATOR_LAYOUT =
         "androidx.coordinatorlayout:coordinatorlayout:${Versions.COORDINATOR_LAYOUT}"
     const val ANDROID_SUPPORT_DESIGN = "com.android.support:design:${Sdk.TARGET_SDK_VERSION},0,0"
+    const val ANDROID_MATERIAL_DESIGN = "com.google.android.material:material:${Versions.MATERIAL}"
 }
 
 object TestingLib {

@@ -45,6 +45,7 @@ dependencies {
     // bottom sheet dependencies
     implementation(SupportLibs.ANDROIDX_COORDINATOR_LAYOUT)
     implementation(SupportLibs.ANDROID_SUPPORT_DESIGN)
+    implementation(SupportLibs.ANDROID_MATERIAL_DESIGN)
 
     testImplementation(TestingLib.JUNIT)
 
