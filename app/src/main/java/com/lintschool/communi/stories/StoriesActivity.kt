@@ -18,7 +18,7 @@ class StoriesActivity : AppCompatActivity() {
     val storiesAdapter = StoriesAdapter()
 //    val stories = UserStories.getUserStoriesList()
     lateinit var timer: CountDownTimer
-    val repository = StoriesInjector.getStoriesRepository(this)
+    lateinit var repository: StoriesRepository
     lateinit var stories: List<UserStories>
 
     var userIndex = 0
@@ -32,6 +32,7 @@ class StoriesActivity : AppCompatActivity() {
     }
 
     private fun setup() {
+        repository = StoriesInjector.getStoriesRepository(this.applicationContext)
         val startingPosition: Int
 
         intent.hasExtra(POSITION_KEY).let {

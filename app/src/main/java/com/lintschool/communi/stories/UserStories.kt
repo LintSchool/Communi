@@ -19,8 +19,27 @@ data class UserStories(
                     Story(R.drawable.download),
                     Story(R.drawable.flowers),
                     Story(R.drawable.download1)
-                ),
-                true
+                )
+            ),
+            UserStories(
+                "Eve Johnson", 2, R.drawable.desktop,
+                listOf(Story(R.drawable.desktop))
+            ),
+            UserStories(
+                "Eve Johnson", 3, R.drawable.flowers,
+                listOf(
+                    Story(R.drawable.download1),
+                    Story(R.drawable.download1),
+                    Story(R.drawable.download1)
+                )
+            ),
+            UserStories(
+                "Eve Johnson", 1, R.drawable.download,
+                listOf(
+                    Story(R.drawable.download),
+                    Story(R.drawable.flowers),
+                    Story(R.drawable.download1)
+                )
             ),
             UserStories(
                 "Eve Johnson", 2, R.drawable.desktop,

@@ -11,9 +11,12 @@ class StoriesRepository(val storiesApi: StoriesApi, val sharedPreferencesWrapper
     }
 
     fun getStoriesFromPosition(position: Int): List<UserStories> {
+        val startingPosition = position - 1
         val stories = storiesApi.getUsersStories()
-        if (position != 0 && position < stories.size) {
-            return stories.subList(position, stories.lastIndex)
+        if (startingPosition != 0 && startingPosition < stories.size) {
+            return stories.subList(startingPosition, stories.size).apply {
+                this[0].playing = true
+            }
         } else {
             throw IllegalArgumentException("Position should be within stories list")
         }

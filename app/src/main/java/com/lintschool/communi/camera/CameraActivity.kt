@@ -55,11 +55,18 @@ class CameraActivity : AppCompatActivity() {
                         message: String,
                         exc: Throwable?
                     ) {
-                        Log.d(this@CameraActivity::class.java.simpleName, "Error Capturing image $message")
+                        Log.d(
+                            this@CameraActivity::class.java.simpleName,
+                            "Error Capturing image $message"
+                        )
                     }
 
                     override fun onImageSaved(file: File) {
-                        val uri = FileProvider.getUriForFile(this@CameraActivity, "$packageName.provider", file)
+                        val uri = FileProvider.getUriForFile(
+                            this@CameraActivity,
+                            "$packageName.provider",
+                            file
+                        )
                         callingActivity?.let {
                             val intent = Intent()
                             val data = intent.putExtra(CAPTURED_IMAGE, uri)
@@ -90,6 +97,16 @@ class CameraActivity : AppCompatActivity() {
             }
 
             camera_preview.post { startCamera() }
+        }
+
+        gallery_iv.setOnClickListener {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(
+                Intent.createChooser(intent, "Select Picture"),
+                SELECT_IMAGE_REQUEST_CODE
+            )
         }
     }
 
@@ -123,6 +140,21 @@ class CameraActivity : AppCompatActivity() {
 
         if (requestCode == OPEN_SETTINGS_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             camera_preview.post { startCamera() }
+        } else if (requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val uri = data?.data ?: Uri.EMPTY
+            callingActivity?.let {
+                val intent = Intent()
+                val selectedImage = intent.putExtra(CAPTURED_IMAGE, uri)
+                setResult(Activity.RESULT_OK, selectedImage)
+                finish()
+            } ?: run {
+                startActivity(
+                    ShareMediaActivity.buildIntent(
+                        this@CameraActivity,
+                        uri
+                    )
+                )
+            }
         }
     }
 
@@ -214,6 +246,7 @@ class CameraActivity : AppCompatActivity() {
         )
         const val PERMISSIONS_REQUEST_CODE = 101
         const val OPEN_SETTINGS_REQUEST_CODE = 102
+        const val SELECT_IMAGE_REQUEST_CODE = 500
 
         fun startIntent(context: Context) = Intent(context, CameraActivity::class.java)
         var CAPTURED_IMAGE = "captured_image"

@@ -91,7 +91,7 @@
         android:contentDescription="@null"
         android:src="@drawable/ic_camera"
         app:layout_constraintBottom_toBottomOf="@id/reply_bar"
-        app:layout_constraintEnd_toStartOf="@id/send_iv"
+        app:layout_constraintEnd_toStartOf="@id/btn_send"
         app:layout_constraintTop_toTopOf="@id/reply_bar" />
 
     <androidx.appcompat.widget.AppCompatEditText

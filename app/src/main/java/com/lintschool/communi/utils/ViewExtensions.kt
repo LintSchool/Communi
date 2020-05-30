@@ -24,5 +24,5 @@ fun ImageView.loadImageUri(imageUri: Uri) {
 }
 
 fun ImageView.loadImageRes(imageRes: Int) {
-    Glide.with(this.context).load(imageRes).into(this)
+    Glide.with(this.context.applicationContext).load(imageRes).into(this)
 }
