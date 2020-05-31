@@ -5,8 +5,7 @@ import android.content.SharedPreferences
 class AuthRepositoryImpl(
     val apiAuthService: ApiAuthService,
     val sharedPreferences: SharedPreferences,
-    val sharedPrefsEditor: SharedPreferences.Editor
-) :AuthRepository{
+    val sharedPrefsEditor: SharedPreferences.Editor):AuthRepository{
 
 
     override fun attemptLogin(email: String, password: String) {
