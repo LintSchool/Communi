@@ -57,6 +57,12 @@ dependencies {
 
     implementation(SupportLibs.SHARED_PREFERENCES)
 
+    implementation(SupportLibs.KOIN)
+    implementation(SupportLibs.KOIN_VIEWMODEL)
+
+    implementation(SupportLibs.VIEWMODEL)
+    implementation(SupportLibs.LIFECYCLE_EXTENSIONS)
+
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

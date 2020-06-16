@@ -8,17 +8,20 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lintschool.communi.R
+import com.lintschool.communi.stories.data.StoriesVM
+import com.lintschool.communi.stories.data.UserStories
 import com.lintschool.communi.utils.loadImageRes
 import kotlinx.android.synthetic.main.activity_stories.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class StoriesActivity : AppCompatActivity() {
 
     val storiesAdapter = StoriesAdapter()
-//    val stories = UserStories.getUserStoriesList()
     lateinit var timer: CountDownTimer
-    lateinit var repository: StoriesRepository
+    val viewModel: StoriesVM by viewModel()
     lateinit var stories: List<UserStories>
 
     var userIndex = 0
@@ -32,12 +35,11 @@ class StoriesActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        repository = StoriesInjector.getStoriesRepository(this.applicationContext)
         val startingPosition: Int
 
         intent.hasExtra(POSITION_KEY).let {
             startingPosition = intent.getIntExtra(POSITION_KEY, 0)
-            stories = repository.getStoriesFromPosition(startingPosition)
+            viewModel.getStories(startingPosition)
         }
 
         timer = object : CountDownTimer(TIMER_DURATION, TIMER_INTERVAL) {
@@ -84,10 +86,16 @@ class StoriesActivity : AppCompatActivity() {
                 userIndex = it
                 loadCurrentStory(userIndex, storyIndex)
             }
-            submitList(stories)
         }
 
-        loadCurrentStory(userIndex, storyIndex)
+        viewModel.stories.observe(
+            this,
+            Observer {
+                stories = it
+                storiesAdapter.submitList(stories)
+                loadCurrentStory(userIndex, storyIndex)
+            }
+        )
 
         reply_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -110,7 +118,7 @@ class StoriesActivity : AppCompatActivity() {
         })
 
         btn_send.setOnClickListener {
-            repository.sendReply(stories[userIndex].userId, reply_et.text.toString())
+            viewModel.sendReply(stories[userIndex].userId, reply_et.text.toString())
         }
     }
 

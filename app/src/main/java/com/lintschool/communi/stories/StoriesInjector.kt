@@ -1,24 +1,30 @@
 package com.lintschool.communi.stories
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import com.lintschool.communi.stories.data.SharedPreferencesWrapper
+import com.lintschool.communi.stories.data.StoriesApi
+import com.lintschool.communi.stories.data.StoriesRepository
+import com.lintschool.communi.stories.data.StoriesUseCase
+import com.lintschool.communi.stories.data.StoriesVM
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.dsl.module.module
 
 object StoriesInjector {
 
-    fun getSharedPreferences(context: Context): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-    }
+    val storiesModule = module {
 
-    fun getPreferencesWrapper(context: Context): SharedPreferencesWrapper {
-        return SharedPreferencesWrapper(getSharedPreferences(context))
-    }
+        single { PreferenceManager.getDefaultSharedPreferences(androidContext()) }
+        single { SharedPreferencesWrapper(get()) }
+        single { StoriesApi() }
 
-    fun getStoriesApi(): StoriesApi {
-        return StoriesApi()
-    }
-
-    fun getStoriesRepository(context: Context): StoriesRepository {
-        return StoriesRepository(getStoriesApi(), getPreferencesWrapper(context))
+        factory {
+            StoriesRepository(
+                get(),
+                get()
+            )
+        }
+        factory { StoriesUseCase(get()) }
+        viewModel { StoriesVM(get()) }
     }
 }

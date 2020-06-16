@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lintschool.communi.R
+import com.lintschool.communi.stories.data.UserStories
 import com.lintschool.communi.utils.loadImageRes
 import kotlinx.android.synthetic.main.add_story_rv_item.view.*
 import kotlinx.android.synthetic.main.item_current_story.view.*

@@ -25,6 +25,8 @@ object Versions {
     const val CIRCLE_IMAGE = "3.1.0"
     const val SHIMMER = "0.4.0"
     const val ANDROIDX_PREFERENCE = "1.1.1"
+    const val KOIN = "1.0.2"
+    const val LIFECYCLE = "2.2.0"
 }
 
 object BuildPluginsVersion {
@@ -51,6 +53,10 @@ object SupportLibs {
     const val PICASSO = "com.squareup.picasso:picasso:${Versions.PICASSO_VERSION}"
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val SHARED_PREFERENCES = "androidx.preference:preference:${Versions.ANDROIDX_PREFERENCE}"
+    const val KOIN = "org.koin:koin-android:${Versions.KOIN}"
+    const val KOIN_VIEWMODEL = "org.koin:koin-android-viewmodel:${Versions.KOIN}"
+    const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
+    const val LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
 }
 
 object TestingLib {

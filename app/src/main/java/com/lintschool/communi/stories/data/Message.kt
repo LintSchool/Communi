@@ -1,4 +1,4 @@
-package com.lintschool.communi.stories
+package com.lintschool.communi.stories.data
 
 data class Message(
     val senderId: Int,
