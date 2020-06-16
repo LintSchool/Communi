@@ -28,6 +28,6 @@ jobs:
       - name: Enable Gradle permission
         run:  chmod +x ./gradlew
       - name: Run Gradle tasks
-        run: ./gradlew build check --continue
+        run: ./gradlew build check
       - name: Stop Gradle
         run: ./gradlew --stop
