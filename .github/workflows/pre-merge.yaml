@@ -3,8 +3,8 @@ name: Pre Merge Checks
 on:
   push:
     branches:
-      - develop
       - master
+      - develop
   pull_request:
     branches:
       - '*'
@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
     steps:
-      - name: Enable Gradle permission
-        run:  chmod +x ./gradlew
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Cache Gradle Caches
@@ -28,6 +26,8 @@ jobs:
         with:
           path: ~/.gradle/wrapper/
           key: cache-gradle-wrapper
+      - name: Enable Gradle permission
+        run:  chmod +x ./gradlew
       - name: Run Gradle tasks
         run: ./gradlew build check publishToMavenLocal --continue
       - name: Stop Gradle
