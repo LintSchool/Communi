@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - develop
   pull_request:
     branches:
       - '*'
@@ -29,6 +28,6 @@ jobs:
       - name: Enable Gradle permission
         run:  chmod +x ./gradlew
       - name: Run Gradle tasks
-        run: ./gradlew build check publishToMavenLocal --continue
+        run: ./gradlew build check --continue
       - name: Stop Gradle
         run: ./gradlew --stop
