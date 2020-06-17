@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-android-extensions")
+    kotlin("kapt")
 }
 
 android {
@@ -48,6 +49,11 @@ dependencies {
     implementation(SupportLibs.ANDROID_MATERIAL_DESIGN)
 
     testImplementation(TestingLib.JUNIT)
+
+    //Dagger
+    implementation(Dagger.MAIN)
+    kapt(Dagger.COMPILER)
+
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)

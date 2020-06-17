@@ -5,6 +5,7 @@ object Sdk {
 }
 
 object Versions {
+    const val DAGGER: String ="2.13"
     const val ANDROIDX_TEST_EXT = "1.1.1"
     const val ANDROIDX_TEST = "1.2.0"
     const val APPCOMPAT = "1.1.0"
@@ -45,4 +46,9 @@ object AndroidTestingLib {
     const val ANDROIDX_TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
     const val ANDROIDX_TEST_EXT_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+}
+
+object Dagger{
+    const val MAIN = "com.google.dagger:dagger:${Versions.DAGGER}"
+    const val COMPILER = "com.google.dagger:dagger-compiler:${Versions.DAGGER}"
 }

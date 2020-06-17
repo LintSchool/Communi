@@ -7,3 +7,4 @@ data class CommentDetail(
     var commentImagePath: String = "",
     var commentLikes: Int = 0
 )
+
