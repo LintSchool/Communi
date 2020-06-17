@@ -41,6 +41,27 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_APPCOMPAT)
     implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
     implementation(SupportLibs.ANDROIDX_CORE_KTX)
+    implementation(SupportLibs.ANDROIDX_VIEWPAGER2)
+    implementation(SupportLibs.GOOGLE_ANDROID_MATERIAL)
+    implementation(SupportLibs.ANDROIDX_LEGACY)
+    implementation(SupportLibs.PICASSO)
+
+    // CameraX
+    implementation(SupportLibs.CAMERAX)
+    implementation(SupportLibs.CAMERAX_EXTENSIONS)
+    implementation(SupportLibs.CAMERAX_VIEW)
+    implementation(SupportLibs.GLIDE)
+
+    implementation(SupportLibs.CIRCLE_IMAGE_VIEW)
+    implementation(SupportLibs.FACEBOOK_SHIMMER)
+
+    implementation(SupportLibs.SHARED_PREFERENCES)
+
+    implementation(SupportLibs.KOIN)
+    implementation(SupportLibs.KOIN_VIEWMODEL)
+
+    implementation(SupportLibs.VIEWMODEL)
+    implementation(SupportLibs.LIFECYCLE_EXTENSIONS)
 
     testImplementation(TestingLib.JUNIT)
 

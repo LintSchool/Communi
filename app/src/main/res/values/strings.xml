@@ -1,4 +1,25 @@
 <resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Feed -->
+    <string name="stories">Stories</string>
+    <string name="feed_title">Nice to see you,\n</string>
+    <string name="feed_subtitle">What\'s on your mind?</string>
+
+    <!-- Camera -->
+    <string name="send_photo">Send Photo</string>
+    <string name="camera_permission_snackbar_text">This Feature requires permission</string>
+    <string name="turn_on">Turn On</string>
+
+    <string name="feed">Feed</string>
+    <string name="events">Events</string>
+    <string name="chat">Chat</string>
+    <string name="profile">Profile</string>
+
+    <string name="stories_counter">%1$d/%2$d</string>
     <string name="app_name">Communi</string>
+    <string name="new_post">New Post</string>
+    <string name="post_field">Tell your freinds what\'s on your mind</string>
 
 </resources>
+
