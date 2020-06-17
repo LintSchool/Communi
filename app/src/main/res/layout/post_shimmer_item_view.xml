@@ -15,7 +15,7 @@
         android:padding="@dimen/doub_grid_size">
 
         <ImageView
-            android:id="@+id/circle1"
+            android:id="@+id/circle"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/circle_gray"
@@ -26,18 +26,18 @@
             android:layout_width="30dp"
             android:layout_height="8dp"
             android:background="@drawable/shimmer_rounded"
-            app:layout_constraintStart_toEndOf="@+id/circle1"
+            app:layout_constraintStart_toEndOf="@+id/circle"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"/>
 
         <View
-            android:id="@+id/v1"
+            android:id="@+id/v"
             android:layout_width="80dp"
             android:layout_height="10dp"
             android:background="@drawable/shimmer_rounded"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/circle1"
+            app:layout_constraintTop_toBottomOf="@+id/circle"
             android:layout_marginTop="18dp"/>
 
         <View
@@ -45,7 +45,7 @@
             android:layout_height="10dp"
             android:background="@drawable/shimmer_rounded"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v1"
+            app:layout_constraintTop_toBottomOf="@+id/v"
             android:layout_marginTop="8dp"/>
 
 
