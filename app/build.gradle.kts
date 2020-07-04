@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("kotlin-android-extensions")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -30,6 +31,14 @@ android {
             )
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
     lintOptions {
         isWarningsAsErrors = true
@@ -50,9 +59,16 @@ dependencies {
 
     testImplementation(TestingLib.JUNIT)
 
-    //Dagger
-    implementation(Dagger.MAIN)
-    kapt(Dagger.COMPILER)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation("androidx.activity:activity-ktx:1.1.0")
+
+
+    //hilt
+    implementation(Hilt.MAIN)
+    implementation(Hilt.viewModel)
+    kapt(Hilt.compiler)
+    kapt(Hilt.viewModelCompiler)
 
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

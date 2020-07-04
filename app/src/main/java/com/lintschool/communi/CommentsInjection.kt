@@ -26,12 +26,4 @@ object CommentsInjection {
     ): CommentsRepository =
         CommentsRepository(sharedPreferences, apiHelper)
 
-    fun provideViewModelFactory(context: Context): CommentsViewModelFactory =
-        CommentsViewModelFactory(
-            provideRepository(
-                provideSharedPreference(context),
-                provideAPIHelper()
-            )
-        )
-
 }

@@ -8,6 +8,16 @@ plugins {
     id("com.github.ben-manes.versions") version BuildPluginsVersion.VERSIONS_PLUGIN
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.google.dagger:hilt-android-gradle-plugin:${Versions.Hilt}")
+    }
+}
 allprojects {
     group = PUBLISHING_GROUP
     repositories {
@@ -15,12 +25,14 @@ allprojects {
         mavenCentral()
         jcenter()
     }
+
 }
 
 subprojects {
     apply {
         plugin("io.gitlab.arturbosch.detekt")
         plugin("org.jlleitschuh.gradle.ktlint")
+
     }
 
     ktlint {

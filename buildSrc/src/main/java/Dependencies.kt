@@ -16,10 +16,11 @@ object Versions {
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
     const val MATERIAL = "1.0.0"
+    const val Hilt = "2.28-alpha"
 }
 
 object BuildPluginsVersion {
-    const val AGP = "3.6.3"
+    const val AGP = "4.0.0"
     const val DETEKT = "1.8.0"
     const val KOTLIN = "1.3.72"
     const val KTLINT = "9.2.1"
@@ -51,4 +52,11 @@ object AndroidTestingLib {
 object Dagger{
     const val MAIN = "com.google.dagger:dagger:${Versions.DAGGER}"
     const val COMPILER = "com.google.dagger:dagger-compiler:${Versions.DAGGER}"
+}
+
+object Hilt {
+    const val MAIN ="com.google.dagger:hilt-android:${Versions.Hilt}"
+    const val compiler = "com.google.dagger:hilt-android-compiler:${Versions.Hilt}"
+    const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
+    const val viewModelCompiler = "androidx.hilt:hilt-compiler:1.0.0-alpha01"
 }

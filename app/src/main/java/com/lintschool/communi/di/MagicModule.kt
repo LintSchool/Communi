@@ -1,23 +1,27 @@
 package com.lintschool.communi.di
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.lintschool.communi.APIHelper
 import com.lintschool.communi.CommentsRepository
-import com.lintschool.communi.CommentsViewModelFactory
+import com.lintschool.communi.ComunniApp
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityScoped
 
 @Module
-class MagicModule(private val context: Context) {
-
+@InstallIn(ActivityComponent::class)
+object MagicModule {
     @Provides
     fun provideAPIHelper(): APIHelper = APIHelper()
 
-    @Singleton
     @Provides
-    fun provideSharedPreference(): SharedPreferences =
+    @ActivityScoped
+    fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences("name", Context.MODE_PRIVATE)
 
     @Provides
@@ -25,9 +29,8 @@ class MagicModule(private val context: Context) {
         apiHelper: APIHelper,
         sharedPreferences: SharedPreferences
     ): CommentsRepository =
-        CommentsRepository(sharedPreferences,apiHelper )
-
-    @Provides
-    fun provideViewModelFactory(repository: CommentsRepository): CommentsViewModelFactory =
-        CommentsViewModelFactory(repository)
+        CommentsRepository(sharedPreferences, apiHelper)
 }
+
+
+
