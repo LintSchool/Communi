@@ -1,0 +1,20 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!---->
+    <!---->
+    <!-- include main content -->
+    <include layout="@layout/activity_event_details"></include>
+<!--    <include layout="@layout/toolbar"></include>-->
+    <!---->
+    <!-- include bottom sheet -->
+    <include layout="@layout/event_details_bottom_sheet" />
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!---->
